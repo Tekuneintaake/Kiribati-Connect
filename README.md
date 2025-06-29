@@ -1,29 +1,24 @@
-# Kiribati-Connect
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Kiribati Connect - Social Network for Island Communities</title>
-    <meta name="description" content="Connect with your Kiribati community. Share island life moments, discover local events, and stay connected with friends across the Pacific islands." />
-    
-    <!-- Open Graph tags for social sharing -->
-    <meta property="og:title" content="Kiribati Connect - Social Network for Island Communities" />
-    <meta property="og:description" content="Connect with your Kiribati community. Share island life moments, discover local events, and stay connected with friends across the Pacific islands." />
-    <meta property="og:type" content="website" />
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./index.js"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
-</html>
+# Kiribati Connect 🌴
+
+Kiribati Connect is a social and shopping platform made for the island communities of Kiribati, powered by the MAURInet initiative.
+
+🚀 **Live site:** [https://kiribati-connect.pages.dev](https://kiribati-connect.pages.dev)
+
+## Features
+- Community connection
+- Local events, products & classifieds
+- Responsive, fast, and built with simplicity
+
+## Tech Stack
+- HTML, CSS, JavaScript
+- Hosted on Cloudflare Pages
+- Open Graph & SEO friendly
+
+## Getting Started
+1. Clone this repo
+2. Edit `index.html`, `style.css`, and `script.js`
+3. Push to GitHub – Cloudflare deploys automatically!
+
+---
+
+Created with ❤️ for the people of Kiribati.
