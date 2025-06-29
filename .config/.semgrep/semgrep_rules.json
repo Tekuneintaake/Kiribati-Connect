@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "id": "vendored-rules.generic.bicep.security.secure-parameter-for-secrets",
+      "languages": [
+        "generic"
+      ],
+      "message": "Mark sensitive parameters with the @secure() decorator. This avoids logging the value or displaying it in the Azure portal, Azure CLI, or Azure PowerShell.",
+      "metadata": {
+        "category": "security",
+        "confidence": "LOW",
+        "cwe": [
+          "CWE-532: Insertion of Sensitive Information into Log File"
+        ],
+        "impact": "LOW",
+        "likelihood": "LOW",
+        "owasp": [
+          "A09:2021 - Security Logging and Monitoring Failures"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/532.html",
+          "https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/scenarios-secrets"
+        ],
+        "subcategory": [
+          "audit"
+        ],
+        "technology": [
+          "bicep"
+        ]
+      },
+      "paths": {
+        "include": [
+          "*.bicep"
+        ]
+      },
+      "patterns": [
+        {
+          "pattern": "param $NAME string"
+        },
+        {
+          "pattern-not-inside": "@secure()\nparam $NAME string\n"
