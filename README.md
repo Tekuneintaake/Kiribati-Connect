@@ -1,16 +1,16 @@
-
 # Kiribati Connect 🌴
 
-[![Deploy to Firebase](https://github.com/Tekuneintaake/Kiribati-Connect/actions/workflows/deploy.yml/badge.svg)](https://github.com/Tekuneintaake/Kiribati-Connect/actions)
+[![Cloudflare Deployment](https://img.shields.io/badge/Cloudflare-Hosted-orange)]()
+[![Firebase Backend](https://img.shields.io/badge/Firebase-Auth_&_DB-yellow)]()
 
 The social platform connecting Kiribati communities worldwide.
 
-## Features
+## 🚀 Features
 - Island-based user networks
 - Bilingual interface (English/Gilbertese)
-- Low-bandwidth optimized
+- Cloudflare-optimized performance
 
-## Development
+## 🔧 Development
 ```bash
 npm install
 npm run dev
