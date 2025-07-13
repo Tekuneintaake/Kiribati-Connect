@@ -1,16 +1,18 @@
-# Kiribati Connect 🌴
+# Kiribati Connect 🌊
 
-[![Cloudflare Deployment](https://img.shields.io/badge/Cloudflare-Hosted-orange)]()
-[![Firebase Backend](https://img.shields.io/badge/Firebase-Auth_&_DB-yellow)]()
+[![Cloudflare Hosted](https://img.shields.io/badge/Hosted_on-Cloudflare_Pages-orange?logo=cloudflare)]()
+[![Firebase Backend](https://img.shields.io/badge/Backend-Firebase_Auth_&_DB-ffca28?logo=firebase)]()
 
-The social platform connecting Kiribati communities worldwide.
+**The social platform connecting I-Kiribati worldwide**
 
-## 🚀 Features
-- Island-based user networks
-- Bilingual interface (English/Gilbertese)
-- Cloudflare-optimized performance
+## ✨ Features
+- 🔐 Firebase Authentication (Email/Password)
+- 🗃️ Firestore Database for island-based posts
+- 🌐 Cloudflare-edge optimized delivery
+- 🏝️ Bilingual UI (English/Gilbertese)
 
-## 🔧 Development
+## 🛠️ Development
 ```bash
-npm install
-npm run dev
+npm install   # Install dependencies
+npm run dev   # Start local server (http://localhost:3000)
+npm run build # Production build (outputs to /dist)
