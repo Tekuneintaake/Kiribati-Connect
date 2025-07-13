@@ -1,18 +1,21 @@
-# Kiribati Connect 🌊
+# Kiribati Connect 🌴✈️
 
-[![Cloudflare Hosted](https://img.shields.io/badge/Hosted_on-Cloudflare_Pages-orange?logo=cloudflare)]()
-[![Firebase Backend](https://img.shields.io/badge/Backend-Firebase_Auth_&_DB-ffca28?logo=firebase)]()
+<!-- Add frigate bird image here when ready -->
+<!-- Suggested: <img src="assets/frigate-bird.png" alt="Frigate Bird" width="150" align="right"> -->
 
-**The social platform connecting I-Kiribati worldwide**
+[![Cloudflare Hosted](https://img.shields.io/badge/Hosted_on-Cloudflare_Pages-orange?logo=cloudflare)](https://pages.cloudflare.com/)
+[![Firebase Powered](https://img.shields.io/badge/Backend-Firebase_Auth_+_DB-ffca28?logo=firebase)](https://firebase.google.com)
 
-## ✨ Features
-- 🔐 Firebase Authentication (Email/Password)
-- 🗃️ Firestore Database for island-based posts
-- 🌐 Cloudflare-edge optimized delivery
-- 🏝️ Bilingual UI (English/Gilbertese)
+**Connecting I-Kiribati worldwide with cultural pride**
 
-## 🛠️ Development
-```bash
-npm install   # Install dependencies
-npm run dev   # Start local server (http://localhost:3000)
-npm run build # Production build (outputs to /dist)
+## 🌟 Why Use This App?
+- Designed for Kiribati's internet infrastructure
+- Respects local traditions (add frigate bird imagery later)
+- Built by islanders, for islanders
+
+## 🛠️ Tech Stack
+```mermaid
+graph TD
+    A[React Frontend] -->|Hosted on| B[Cloudflare Edge]
+    A -->|Secured by| C[Firebase Auth]
+    A -->|Data in| D[Firestore DB]
