@@ -1,3 +1,10 @@
+// Load current user from localStorage
+const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
+  name: 'Guest',
+  avatar: '??',
+  location: 'Unknown'
+};
+
 // === LIKE BUTTON ===
 document.querySelectorAll('.like-btn').forEach(button => {
   button.addEventListener('click', function() {
