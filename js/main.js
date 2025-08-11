@@ -46,8 +46,8 @@ document.querySelectorAll('.comment-submit').forEach(button => {
     commentEl.className = 'comment-item';
 
     // Use first two letters of the current user (you can improve this later)
-    const userInitials = 'YO'; // Later: get from login
-    const userName = 'You';   // Later: get from login
+    const userName = currentUser.name;
+const userInitials = currentUser.avatar;
 
     commentEl.innerHTML = `
       <div class="avatar">${userInitials}</div>
