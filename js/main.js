@@ -1,3 +1,13 @@
+// Load current user
+const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
+  name: 'Guest',
+  avatar: '??'
+};
+
+// === LIKE BUTTON ===
+document.querySelectorAll('.like-btn').forEach(button => {
+  // ... rest of your code
+
 // Load current user from localStorage
 const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
   name: 'Guest',
