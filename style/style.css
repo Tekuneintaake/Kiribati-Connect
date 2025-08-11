@@ -1,3 +1,31 @@
+/* Top Navigation Bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003D79; /* Kiribati blue */
+  padding: 12px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.top-bar .logo img {
+  height: 40px;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-icons a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-icons i {
+  font-size: 24px;
+}
+
 /* Global Styles */
 * {
   margin: 0;
