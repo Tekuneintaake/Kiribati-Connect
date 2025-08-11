@@ -17,7 +17,7 @@ This project is built by the Mahanaim Inc.Community:
 
 🎯 Purpose
 
-- Connect IKiribati across Aranuka, Tarawa, Kiribati, and the diaspora
+- Connect IKiribati across Aranuka, Abemama, Tarawa, Abaiang, Beru, Nikunau, Arorae, all Kiribati, and the diaspora
 - Share stories, news, and moments of life
 - Be easy to use — even on slow internet
 - Be 100% free, with no ads or data tracking
