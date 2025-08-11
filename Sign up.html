@@ -91,5 +91,45 @@
     </p>
   </div>
 
+  <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Get form values
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const bio = document.getElementById('bio').value.trim();
+  const location = document.getElementById('location').value;
+  let photoURL = '';
+
+  // Simulate photo upload (in real app, you'd upload to Cloudflare R2)
+  const photoInput = document.getElementById('photo');
+  if (photoInput.files && photoInput.files[0]) {
+    // For now, we'll use initials if no real upload
+    photoURL = ''; // We'll handle image later
+  }
+
+  // Create user object
+  const user = {
+    name: name,
+    email: email,
+    password: password,  // In real app, hash this
+    bio: bio || 'No bio yet',
+    location: location || 'Unknown',
+    photo: photoURL,
+    avatar: name.slice(0,2).toUpperCase(),  // e.g., "TK"
+    joined: new Date().toISOString().split('T')[0]
+  };
+
+  // Save to localStorage
+  localStorage.setItem('currentUser', JSON.stringify(user));
+
+  // Go to homepage
+  alert('Welcome to Kiribati Connect, ' + user.name + '!');
+  window.location.href = 'index.html';
+});
+</script>
+
 </body>
 </html>
