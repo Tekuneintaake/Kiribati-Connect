@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log In | Kiribati Connect</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
 
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">Kiribati Connect</div>
+  </div>
+
+  <!-- Login Form -->
+  <div class="container" style="max-width: 500px; margin: 40px auto;">
+    <h2>Welcome Back</h2>
+    <p>Log in to your account</p>
+
+    <form id="login-form">
+      <div style="margin-bottom: 15px;">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+      </div>
+
+      <button type="submit" style="background:#D62828; color:white; border:none; padding:12px; width:100%; font-size:16px; border-radius:4px; cursor:pointer;">
+        Log In
+      </button>
+    </form>
+
+    <p style="text-align:center; margin-top:20px;">
+      <a href="signup.html">Don’t have an account? Join Now</a>
+    </p>
+  </div>
+
+  <!-- Login Script -->
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Get stored user
+      const storedUser = localStorage.getItem('currentUser');
+      if (!storedUser) {
+        alert('No account found. Please sign up first.');
+        return;
+      }
+
+      const user = JSON.parse(storedUser);
+
+      // Check email and password
+      if (user.email === email && user.password === password) {
+        alert('Welcome back, ' + user.name + '!');
+        // Re-save in case needed
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        window.location.href = 'index.html';
+      } else {
+        alert('Email or password is incorrect.');
+      }
+    });
+  </script>
+
+</body>
+</html>
