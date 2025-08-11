@@ -1,3 +1,10 @@
+/* Hide sidebar on mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 /* Top Navigation Bar */
 .top-bar {
   display: flex;
