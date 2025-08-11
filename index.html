@@ -1,28 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Kiribati Connect - Social Network for Island Communities</title>
-    <meta name="description" content="Connect with your Kiribati community. Share island life moments, discover local events, and stay connected with friends across the Pacific islands." />
-    
-    <!-- Open Graph tags for social sharing -->
-    <meta property="og:title" content="Kiribati Connect - Social Network for Island Communities" />
-    <meta property="og:description" content="Connect with your Kiribati community. Share island life moments, discover local events, and stay connected with friends across the Pacific islands." />
-    <meta property="og:type" content="website" />
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiribati Connect</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+      background-color: #f0f2f5;
+      color: #2e2e2e;
+      line-height: 1.6;
+    }
+
+    /* Top Navigation Bar */
+    .top-bar {
+      background-color: #003D79; /* Kiribati blue */
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .nav-links a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Container */
+    .container {
+      display: flex;
+      max-width: 1000px;
+      margin: 20px auto;
+      gap: 20px;
+      padding: 0 10px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      flex: 1;
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .sidebar h3 {
+      color: #003D79;
+      margin-bottom: 15px;
+    }
+    .sidebar a {
+      display: block;
+      color: #003D79;
+      margin: 10px 0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+    }
+    .sidebar a:hover {
+      color: #D62828; /* Kiribati red */
+    }
+
+    /* Main Feed */
+    .feed {
+      flex: 2;
+    }
+
+    /* Create Post Box */
+    .post-form {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .post-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      margin-bottom: 10px;
+      resize: none;
+    }
+    .post-btn {
+      background-color: #D62828; /* Bold red for action */
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .post-btn:hover {
+      background-color: #c01a1a;
+    }
+
+    /* Posts */
+    .post {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #FDB813; /* Sun gold */
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+    }
+    .post-name {
+      font-weight: bold;
+      color: #003D79;
+    }
+    .post-location {
+      font-size: 0.8em;
+      color: #65676b;
+      margin-left: 5px;
+    }
+    .post-time {
+      font-size: 0.8em;
+      color: #65676b;
+    }
+    .post-content {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+    .post-actions {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid #e4e6eb;
+      font-size: 14px;
+      color: #65676b;
+    }
+    .post-actions div {
+      cursor: pointer;
+    }
+    .post-actions div:hover {
+      color: #D62828;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <div class="top-bar">
+    <div class="logo">Kiribati Connect</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Messages</a>
+      <a href="#">Settings</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <a href="#">News Feed</a>
+      <a href="#">Groups</a>
+      <a href="#">Events</a>
+      <a href="#">Friends</a>
+      <a href="#">Photos</a>
+      <hr style="margin: 15px 0; border: 1px solid #eee;">
+      <p style="font-size:12px; color:#666;">
+        Built for the IKiribati people.<br>
+        Kiribati: the land. IKiribati: the people.
+      </p>
+    </div>
+
+    <!-- Main Feed -->
+    <div class="feed">
+
+      <!-- Post Creation Form -->
+      <div class="post-form">
+        <textarea class="post-input" placeholder="What’s on your mind?"></textarea>
+        <button class="post-btn">Post</button>
+      </div>
+
+      <!-- Sample Post 1 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">TK</div>
+          <div>
+            <span class="post-name">Tebwebwe Karawa</span>
+            <span class="post-location">from Tarawa</span>
+            <div class="post-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="post-content">
+          Proud to be IKiribati. Our ocean, our culture, our future. 
+          Let’s stay connected across the islands and around the world.
+        </div>
+        <div class="post-actions">
+          <div>Like</div>
+          <div>Comment</div>
+          <div>Share</div>
+        </div>
+      </div>
+
+      <!-- Sample Post 2 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">ME</div>
+          <div>
+            <span class="post-name">Meerieta Teweia</span>
+            <span class="post-location">from Butaritari</span>
+            <div class="post-time">5 hours ago</div>
+          </div>
+        </div>
+        <div class="post-content">
+          Miss the sunrise over the lagoon. Talking to my sister in New Zealand today — glad we have ways to stay close.
+        </div>
+        <div class="post-actions">
+          <div>Like</div>
+          <div>Comment</div>
+          <div>Share</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
 </html>
