@@ -81,32 +81,48 @@
     </p>
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
+<script>
+// Hash password using Web Crypto API
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const bio = document.getElementById('bio').value.trim();
-      const location = document.getElementById('location').value;
+document.querySelector('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
 
-      const user = {
-        name: name,
-        email: email,
-        password: password,
-        bio: bio || 'No bio yet',
-        location: location || 'Unknown',
-        avatar: name.slice(0, 2).toUpperCase(),
-        joined: new Date().toISOString().split('T')[0]
-      };
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const bio = document.getElementById('bio').value.trim();
+  const location = document.getElementById('location').value;
 
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      alert('Welcome to Kiribati Connect, ' + user.name + '!');
-      window.location.href = 'index.html';
-    });
-  </script>
+  if (!name || !email || !password) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  // Hash the password
+  const hashedPassword = await hashPassword(password);
+
+  const user = {
+    name: name,
+    email: email,
+    password: hashedPassword,  // 🔐 Store hashed, not plain
+    bio: bio || 'No bio yet',
+    location: location || 'Unknown',
+    avatar: name.slice(0, 2).toUpperCase(),
+    joined: new Date().toISOString().split('T')[0]
+  };
+
+  localStorage.setItem('currentUser', JSON.stringify(user));
+  alert('Welcome to Kiribati Connect, ' + user.name + '!');
+  window.location.href = 'index.html';
+});
+</script>
 
 </body>
 </html>
