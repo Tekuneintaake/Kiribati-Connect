@@ -19,29 +19,41 @@
     <h2>Create Your Profile</h2>
     <p>Join the IKiribati network</p>
 
-    <form action="#" method="post">
+    <form>
+      <!-- Full Name -->
       <div style="margin-bottom: 15px;">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" placeholder="Teima Teweia" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
       </div>
 
+      <!-- Email -->
       <div style="margin-bottom: 15px;">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="teima@example.com" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
       </div>
 
+      <!-- Password -->
       <div style="margin-bottom: 15px;">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
       </div>
 
+      <!-- BIO -->
+      <div style="margin-bottom: 15px;">
+        <label for="bio">About Me</label>
+        <textarea id="bio" name="bio" placeholder="I'm proud to be IKiribati..." style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px; resize:none;" rows="3"></textarea>
+      </div>
+
+      <!-- LOCATION (only one!) -->
       <div style="margin-bottom: 15px;">
         <label for="location">From</label>
         <select id="location" name="location" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+          <option value="">Select your island or country</option>
           <option value="Tarawa">Tarawa</option>
           <option value="Butaritari">Butaritari</option>
           <option value="Makin">Makin</option>
           <option value="Abaiang">Abaiang</option>
+          <option value="Aranuka">Aranuka</option>
           <option value="NZ">New Zealand</option>
           <option value="Fiji">Fiji</option>
           <option value="Australia">Australia</option>
@@ -50,86 +62,51 @@
         </select>
       </div>
 
+      <!-- PROFILE PHOTO -->
+      <div style="margin-bottom: 15px;">
+        <label for="photo">Profile Photo (optional)</label>
+        <input type="file" id="photo" name="photo" accept="image/*" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+        <small>Supports JPG, PNG, GIF</small>
+      </div>
+
+      <!-- JOIN BUTTON -->
       <button type="submit" style="background:#D62828; color:white; border:none; padding:12px; width:100%; font-size:16px; border-radius:4px; cursor:pointer;">
         Join Now
       </button>
     </form>
 
-    <!-- Bio -->
-<div style="margin-bottom: 15px;">
-  <label for="bio">About Me</label>
-  <textarea id="bio" name="bio" placeholder="I'm proud to be IKiribati..." style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px; resize:none;" rows="3"></textarea>
-</div>
-
-<!-- Location -->
-<div style="margin-bottom: 15px;">
-  <label for="location">From</label>
-  <select id="location" name="location" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-    <option value="">Select your island or country</option>
-    <option value="Tarawa">Tarawa</option>
-    <option value="Butaritari">Butaritari</option>
-    <option value="Makin">Makin</option>
-    <option value="Abaiang">Abaiang</option>
-    <option value="Aranuka">Aranuka</option>
-    <option value="NZ">New Zealand</option>
-    <option value="Fiji">Fiji</option>
-    <option value="Australia">Australia</option>
-    <option value="USA">USA</option>
-    <option value="other">Other</option>
-  </select>
-</div>
-
-<!-- Profile Picture (Optional) -->
-<div style="margin-bottom: 15px;">
-  <label for="photo">Profile Photo (optional)</label>
-  <input type="file" id="photo" name="photo" accept="image/*" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-  <small>Supports JPG, PNG, GIF</small>
-</div>
-
+    <!-- Already have an account? -->
     <p style="text-align:center; margin-top:20px;">
       Already have an account? <a href="login.html">Log in</a>
     </p>
   </div>
 
+  <!-- JavaScript -->
   <script>
-document.querySelector('form').addEventListener('submit', function(e) {
-  e.preventDefault();
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-  // Get form values
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-  const bio = document.getElementById('bio').value.trim();
-  const location = document.getElementById('location').value;
-  let photoURL = '';
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const bio = document.getElementById('bio').value.trim();
+      const location = document.getElementById('location').value;
 
-  // Simulate photo upload (in real app, you'd upload to Cloudflare R2)
-  const photoInput = document.getElementById('photo');
-  if (photoInput.files && photoInput.files[0]) {
-    // For now, we'll use initials if no real upload
-    photoURL = ''; // We'll handle image later
-  }
+      const user = {
+        name: name,
+        email: email,
+        password: password,
+        bio: bio || 'No bio yet',
+        location: location || 'Unknown',
+        avatar: name.slice(0, 2).toUpperCase(),
+        joined: new Date().toISOString().split('T')[0]
+      };
 
-  // Create user object
-  const user = {
-    name: name,
-    email: email,
-    password: password,  // In real app, hash this
-    bio: bio || 'No bio yet',
-    location: location || 'Unknown',
-    photo: photoURL,
-    avatar: name.slice(0,2).toUpperCase(),  // e.g., "TK"
-    joined: new Date().toISOString().split('T')[0]
-  };
-
-  // Save to localStorage
-  localStorage.setItem('currentUser', JSON.stringify(user));
-
-  // Go to homepage
-  alert('Welcome to Kiribati Connect, ' + user.name + '!');
-  window.location.href = 'index.html';
-});
-</script>
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      alert('Welcome to Kiribati Connect, ' + user.name + '!');
+      window.location.href = 'index.html';
+    });
+  </script>
 
 </body>
 </html>
