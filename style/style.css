@@ -288,3 +288,22 @@ body {
   margin-top: 4px;
   font-size: 12px;
   }
+/* Mobile: Show bottom nav, hide sidebar */
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex !important;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .top-bar {
+    padding: 12px 15px;
+  }
+
+  .container {
+    margin-bottom: 70px;
+  }
+}
+
