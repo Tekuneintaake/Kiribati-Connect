@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile | Kiribati Connect</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style/style.css">
+  <style>
+    .profile-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #FDB813;
+      color: white;
+      font-weight: bold;
+      font-size: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 10px;
+    }
+    .profile-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #003D79;
+    }
+    .profile-location {
+      color: #65676b;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+    .profile-bio {
+      margin: 15px 0;
+      font-size: 16px;
+      color: #2e2e2e;
+      line-height: 1.5;
+    }
+    .edit-btn {
+      background: #D62828;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .posts-section {
+      margin-top: 20px;
+    }
+    .post {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">Kiribati Connect</div>
+    <div class="nav-links" id="auth-links">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- Profile Content -->
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-avatar" id="avatar">TK</div>
+      <h2 class="profile-name" id="name">Tebwebwe Karawa</h2>
+      <p class="profile-location" id="location">from Tarawa</p>
+      <p class="profile-bio" id="bio">Proud to be IKiribati. Our ocean, our culture, our future.</p>
+      <button class="edit-btn" onclick="editProfile()">Edit Profile</button>
+    </div>
+
+    <!-- Posts by User -->
+    <div class="posts-section">
+      <h3>Your Posts</h3>
+      <div id="user-posts">
+        <!-- Posts will be added here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Load current user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
+      name: 'Guest',
+      avatar: '??',
+      location: 'Unknown',
+      bio: 'No bio yet',
+      joined: new Date().toISOString().split('T')[0]
+    };
+
+    // Update profile display
+    document.getElementById('name').textContent = currentUser.name;
+    document.getElementById('location').textContent = `from ${currentUser.location}`;
+    document.getElementById('bio').textContent = currentUser.bio;
+    document.getElementById('avatar').textContent = currentUser.avatar;
+
+    // Optional: Set avatar color based on name
+    const colors = ['#FDB813', '#D62828', '#003D79', '#006B3D'];
+    const color = colors[currentUser.name.charCodeAt(0) % colors.length];
+    document.getElementById('avatar').style.backgroundColor = color;
+
+    // Edit Profile
+    function editProfile() {
+      const newName = prompt('Your Name:', currentUser.name);
+      const newBio = prompt('About Me:', currentUser.bio);
+      const newLocation = prompt('From:', currentUser.location);
+
+      if (newName) {
+        currentUser.name = newName;
+        currentUser.avatar = newName.slice(0, 2).toUpperCase();
+      }
+      if (newBio) currentUser.bio = newBio;
+      if (newLocation) currentUser.location = newLocation;
+
+      // Save updated profile
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+      // Update display
+      document.getElementById('name').textContent = currentUser.name;
+      document.getElementById('location').textContent = `from ${currentUser.location}`;
+      document.getElementById('bio').textContent = currentUser.bio;
+      document.getElementById('avatar').textContent = currentUser.avatar;
+      document.getElementById('avatar').style.backgroundColor = color;
+    }
+
+    // Update navigation (Log Out / Log In)
+    function updateAuthLinks() {
+      const authLinks = document.getElementById('auth-links');
+      if (JSON.parse(localStorage.getItem('currentUser'))) {
+        const logoutLink = document.createElement('a');
+        logoutLink.href = '#';
+        logoutLink.textContent = 'Log Out';
+        logoutLink.onclick = function(e) {
+          e.preventDefault();
+          alert('You have been logged out.');
+          window.location.href = 'login.html';
+        };
+        authLinks.appendChild(logoutLink);
+      } else {
+        authLinks.innerHTML = `
+          <a href="login.html">Log In</a>
+          <a href="signup.html">Sign Up</a>
+        `;
+      }
+    }
+
+    // Run on load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAuthLinks();
+
+      // Mock: Add user's posts (from feed)
+      const userPosts = document.getElementById('user-posts');
+      const post = document.createElement('div');
+      post.className = 'post';
+      post.innerHTML = `
+        <div class="post-content">
+          Proud to be IKiribati. Our ocean, our culture, our future. 
+          Let’s stay connected across the islands and around the world.
+        </div>
+        <div class="post-time">2 hours ago</div>
+      `;
+      userPosts.appendChild(post);
+    });
+  </script>
+
+</body>
+</html>
