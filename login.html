@@ -41,7 +41,7 @@
   </div>
 
 <script>
-// Hash password using Web Crypto API
+// Hash password function
 async function hashPassword(password) {
   const encoder = new TextEncoder();
   const data = encoder.encode(password);
@@ -50,39 +50,40 @@ async function hashPassword(password) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-document.querySelector('form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-  const bio = document.getElementById('bio').value.trim();
-  const location = document.getElementById('location').value;
-
-  if (!name || !email || !password) {
-    alert("Please fill in all required fields.");
+// Wait for the page to fully load
+document.addEventListener('DOMContentLoaded', async function() {
+  const form = document.getElementById('login-form');
+  
+  if (!form) {
+    console.error('Login form not found!');
+    alert('Error: Form not loaded.');
     return;
   }
 
-  // ✅ Hash the password before saving
-  const hashedPassword = await hashPassword(password);
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  const user = {
-    name: name,
-    email: email,
-    password: hashedPassword,  // 🔐 Now saved as hash
-    bio: bio || 'No bio yet',
-    location: location || 'Unknown',
-    avatar: name.slice(0, 2).toUpperCase(),
-    joined: new Date().toISOString().split('T')[0]
-  };
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
 
-  // Save to localStorage
-  localStorage.setItem('currentUser', JSON.stringify(user));
-  alert('Welcome to Kiribati Connect, ' + user.name + '!');
-  window.location.href = 'index.html';
+    const storedUser = localStorage.getItem('currentUser');
+    if (!storedUser) {
+      alert('No account found. Please sign up first.');
+      return;
+    }
+
+    const user = JSON.parse(storedUser);
+    const hashedPassword = await hashPassword(password);
+
+    if (user.email === email && user.password === hashedPassword) {
+      alert('Welcome back, ' + user.name + '!');
+      window.location.href = 'index.html';
+    } else {
+      alert('Email or password is incorrect.');
+    }
+  });
 });
-</script>
+  </script>
   
 </body>
 </html>
