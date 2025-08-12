@@ -114,13 +114,12 @@
     </div>
   </div>
 
-  <script>
-// Check login status and update navigation
+<script>
 async function updateAuthLinks() {
   const authLinks = document.getElementById('auth-links');
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-  authLinks.innerHTML = ''; // Clear
+  authLinks.innerHTML = '';
 
   if (currentUser) {
     // Show Log Out
@@ -129,9 +128,9 @@ async function updateAuthLinks() {
     logoutLink.textContent = 'Log Out';
     logoutLink.onclick = function(e) {
       e.preventDefault();
-      localStorage.removeItem('currentUser');
       alert('You have been logged out.');
       window.location.href = 'login.html';
+      // 🔐 We do NOT remove the user
     };
     authLinks.appendChild(logoutLink);
   } else {
@@ -143,9 +142,8 @@ async function updateAuthLinks() {
   }
 }
 
-// Run when page loads
 document.addEventListener('DOMContentLoaded', updateAuthLinks);
-</script>
-
+                                                           </script>
+  
 </body>
 </html>
