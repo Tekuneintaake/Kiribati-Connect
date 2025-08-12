@@ -10,16 +10,12 @@
 </head>
 <body>
 
-  <!-- ✅ ONE Clean Top Navigation Bar -->
   <div class="top-bar">
-    <div class="logo">
-      <h1>Kiribati Connect</h1>
-    </div>
-    <div class="nav-links">
-      <a href="login.html">Log In</a>
-      <a href="signup.html">Sign Up</a>
-    </div>
+  <div class="logo">Kiribati Connect</div>
+  <div class="nav-links" id="auth-links">
+    <!-- Will be filled by JavaScript -->
   </div>
+</div>
 
   <!-- Main Content -->
   <div class="container">
@@ -117,6 +113,39 @@
 
     </div>
   </div>
+
+  <script>
+// Check login status and update navigation
+async function updateAuthLinks() {
+  const authLinks = document.getElementById('auth-links');
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  authLinks.innerHTML = ''; // Clear
+
+  if (currentUser) {
+    // Show Log Out
+    const logoutLink = document.createElement('a');
+    logoutLink.href = '#';
+    logoutLink.textContent = 'Log Out';
+    logoutLink.onclick = function(e) {
+      e.preventDefault();
+      localStorage.removeItem('currentUser');
+      alert('You have been logged out.');
+      window.location.href = 'login.html';
+    };
+    authLinks.appendChild(logoutLink);
+  } else {
+    // Show Log In and Sign Up
+    authLinks.innerHTML = `
+      <a href="login.html">Log In</a>
+      <a href="signup.html">Sign Up</a>
+    `;
+  }
+}
+
+// Run when page loads
+document.addEventListener('DOMContentLoaded', updateAuthLinks);
+</script>
 
 </body>
 </html>
