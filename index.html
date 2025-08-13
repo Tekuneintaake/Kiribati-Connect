@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ... meta, title, links ... -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiribati Connect</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-
-  <!-- ✅ Dynamic Top Bar -->
+  <!-- Top Navigation -->
   <div class="top-bar">
-    <div class="logo">
-      <h1>Kiribati Connect</h1>
-    </div>
-    <div class="nav-links" id="auth-links">
-      <!-- Filled by JavaScript -->
+    <div class="logo">Kiribati Connect</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Messages</a>
+      <a href="#">Settings</a>
     </div>
   </div>
 
   <!-- Main Content -->
   <div class="container">
-    <!-- Sidebar, Feed, Posts -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <a href="#">News Feed</a>
+      <a href="#">Groups</a>
+      <a href="#">Events</a>
+      <a href="#">Friends</a>
+      <a href="#">Photos</a>
+      <hr>
+      <p>Built for the IKiribati people.<br>Kiribati: the land. IKiribati: the people.</p>
+    </div>
+
+    <!-- Main Feed -->
+    <div class="feed">
+      <!-- Post Form -->
+      <div class="post-form">
+        <textarea class="post-input" placeholder="What’s on your mind?"></textarea>
+        <button class="post-btn">Post</button>
+      </div>
+
+      <!-- Sample Post -->
+      <div class="post">
+        <div class="post-header">
+          <div class="avatar">TK</div>
+          <div>
+            <span class="post-name">Tebwebwe Karawa</span>
+            <span class="post-location">from Tarawa</span>
+            <div class="post-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="post-content">
+          Proud to be IKiribati. Our ocean, our culture, our future.
+        </div>
+        <div class="post-actions">
+          <div>Like</div>
+          <div>Comment</div>
+          <div>Share</div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- ✅ Script: Update Nav Based on Login -->
-  <script>
-    async function updateAuthLinks() {
-      const authLinks = document.getElementById('auth-links');
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-      authLinks.innerHTML = '';
-
-      if (currentUser) {
-        const logoutLink = document.createElement('a');
-        logoutLink.href = '#';
-        logoutLink.textContent = 'Log Out';
-        logoutLink.onclick = function(e) {
-          e.preventDefault();
-          alert('You have been logged out.');
-          window.location.href = 'login.html';
-          // 🔐 We do NOT remove the user — just log out
-        };
-        authLinks.appendChild(logoutLink);
-      } else {
-        authLinks.innerHTML = `
-          <a href="login.html">Log In</a>
-          <a href="signup.html">Sign Up</a>
-        `;
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', updateAuthLinks);
-  </script>
-
 </body>
 </html>
