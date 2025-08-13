@@ -1,129 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home | Kiribati Connect</title>
-  <link rel="stylesheet" href="style/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ezTO7xFwUV1rMhkyKC1GtRyaa31BamkItDexu7lNeHdGm7xDPYATZoI9U8BaseVwsTuA2kq+12IeCg=="
-crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- ... meta, title, links ... -->
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <header class="top-bar">
-    <div class="top-bar-container">
-      <img src="images/kiribati-connect-logo.svg" alt="Kiribati Connect" style="width: 150px; height: auto;">
-      
-      <!-- Navigation Icons -->
-      <nav class="top-nav">
-        <a href="index.html"><i class="fa-solid fa-house"></i></a>
-        <a href="search.html"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="notifications.html"><i class="fa-solid fa-bell"></i></a>
-        <a href="profile.html"><i class="fa-solid fa-user"></i></a>
-      </nav>
+  <!-- ✅ Dynamic Top Bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <h1>Kiribati Connect</h1>
     </div>
-  </header>
+    <div class="nav-links" id="auth-links">
+      <!-- Filled by JavaScript -->
+    </div>
+  </div>
 
   <!-- Main Content -->
-  <main class="container" style="max-width: 600px; margin: 20px auto; padding: 20px;">
+  <div class="container">
+    <!-- Sidebar, Feed, Posts -->
+  </div>
 
-    <!-- Welcome Message -->
-    <div id="welcome-section" style="margin-bottom: 20px; padding: 15px; background-color: #f0f8ff; border-radius: 8px;">
-      <p><strong>Koreai, <span id="user-name">Friend</span>!</strong></p>
-      <p>You’re from <strong><span id="user-island">your island</span></strong>.</p>
-    </div>
-
-    <!-- Create Post Box -->
-    <div class="post-box" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1);">
-      <div class="post-header">
-        <img src="images/profile-placeholder.png" alt="Profile Picture" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
-        <textarea 
-          id="post-input" 
-          placeholder="What's on your mind?" 
-          rows="3" 
-          style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; font-size: 16px;"></textarea>
-      </div>
-
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <label style="font-size: 14px; color: #003D79;">
-          <input type="file" id="post-photo" accept="image/*" style="display: none;" />
-          📷 Add Photo
-        </label>
-        <button id="post-button" style="background: #003D79; color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">
-          Post
-        </button>
-      </div>
-    </div>
-
-    <!-- Recent Posts Feed -->
-    <div id="posts-feed" style="margin-top: 30px;">
-      <h3>Recent Posts</h3>
-      <div id="no-posts" style="color: #666; margin-bottom: 10px;">No posts yet. Be the first!</div>
-      <!-- Posts will appear here -->
-    </div>
-
-  </main>
-
-  <!-- Bottom Navigation -->
-  <footer class="bottom-nav">
-    <a href="index.html"><span>Home</span></a>
-    <a href="about.html"><span>About</span></a>
-    <a href="posts.html"><span>Posts</span></a>
-    <a href="contact.html"><span>Contact</span></a>
-  </footer>
-
-  <!-- Script to Show User Info and Handle Posting -->
+  <!-- ✅ Script: Update Nav Based on Login -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const userNameEl = document.getElementById('user-name');
-      const userIslandEl = document.getElementById('user-island');
-      const welcomeSection = document.getElementById('welcome-section');
+    async function updateAuthLinks() {
+      const authLinks = document.getElementById('auth-links');
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      // Load user profile
-      const profile = JSON.parse(localStorage.getItem('currentUserProfile'));
+      authLinks.innerHTML = '';
 
-      if (profile && profile.name) {
-        userNameEl.textContent = profile.name;
-        userIslandEl.textContent = profile.island || 'your island';
+      if (currentUser) {
+        const logoutLink = document.createElement('a');
+        logoutLink.href = '#';
+        logoutLink.textContent = 'Log Out';
+        logoutLink.onclick = function(e) {
+          e.preventDefault();
+          alert('You have been logged out.');
+          window.location.href = 'login.html';
+          // 🔐 We do NOT remove the user — just log out
+        };
+        authLinks.appendChild(logoutLink);
       } else {
-        userNameEl.textContent = 'Friend';
-        userIslandEl.textContent = 'your island';
-        welcomeSection.style.opacity = '0.8';
-      }
-
-      // Handle posting
-      const postInput = document.getElementById('post-input');
-      const postButton = document.getElementById('post-button');
-      const postsFeed = document.getElementById('posts-feed');
-      const noPosts = document.getElementById('no-posts');
-
-      postButton.addEventListener('click', function() {
-        const text = postInput.value.trim();
-        if (!text) {
-          alert('Please write something before posting.');
-          return;
-        }
-
-        // Create post element
-        const postEl = document.createElement('div');
-        postEl.className = 'post-item';
-        postEl.innerHTML = `
-          <div class="post-header">
-            <img src="images/profile-placeholder.png" alt="Profile Picture" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
-            <strong>${document.getElementById('user-name').textContent}</strong> 
-            <span style="color: #888; font-size: 12px;"> • Just now</span>
-          </div>
-          <p style="margin: 8px 0;">${text}</p>
-          <hr style="margin: 10px 0; border: none; border-top: 1px solid #eee;">
-          <div style="font-size: 14px; color: #003D79;">Like · Comment</div>
+        authLinks.innerHTML = `
+          <a href="login.html">Log In</a>
+          <a href="signup.html">Sign Up</a>
         `;
+      }
+    }
 
-        postsFeed.prepend(postEl);
-        postInput.value = '';
-        noPosts.style.display = 'none';
-      });
-    });
+    document.addEventListener('DOMContentLoaded', updateAuthLinks);
   </script>
 
 </body>
