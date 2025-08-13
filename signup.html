@@ -59,5 +59,51 @@
     <a href="posts.html"><span>Posts</span></a>
     <a href="contact.html"><span>Contact</span></a>
   </footer>
+    <script>
+    // Hash password function
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Wait for the page to fully load
+    document.addEventListener('DOMContentLoaded', async function() {
+      const form = document.getElementById('signup-form');
+      
+      if (!form) {
+        console.error('Signup form not found!');
+        alert('Error: Form not loaded.');
+        return;
+      }
+
+      // Handle form submission
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        // Validate required fields
+        if (!name || !email || !password) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        // Hash the password
+        const hashedPassword = await hashPassword(password);
+
+        // Save user data
+        const user = { name, email, password: hashedPassword };
+        localStorage.setItem('currentUser', JSON.stringify(user));
+
+        // Redirect to profile setup
+        window.location.href = 'profile-setup.html';
+      });
+    });
+  </script>
 </body>
 </html>
