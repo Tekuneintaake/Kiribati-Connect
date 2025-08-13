@@ -15,75 +15,72 @@
   </div>
 
   <!-- Login Form -->
-  <div class="container" style="max-width: 500px; margin: 40px auto;">
+  <div class="login-container">
     <h2>Welcome Back</h2>
     <p>Log in to your account</p>
 
     <form id="login-form">
-      <div style="margin-bottom: 15px;">
+      <div>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
       </div>
 
-      <div style="margin-bottom: 15px;">
+      <div>
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+        <input type="password" id="password" name="password" required>
       </div>
 
-      <button type="submit" style="background:#D62828; color:white; border:none; padding:12px; width:100%; font-size:16px; border-radius:4px; cursor:pointer;">
-        Log In
-      </button>
+      <button type="submit">Log In</button>
     </form>
 
-    <p style="text-align:center; margin-top:20px;">
+    <p class="text-center">
       <a href="signup.html">Don’t have an account? Join Now</a>
     </p>
   </div>
 
-<script>
-// Hash password function
-async function hashPassword(password) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-// Wait for the page to fully load
-document.addEventListener('DOMContentLoaded', async function() {
-  const form = document.getElementById('login-form');
-  
-  if (!form) {
-    console.error('Login form not found!');
-    alert('Error: Form not loaded.');
-    return;
-  }
-
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-
-    const storedUser = localStorage.getItem('currentUser');
-    if (!storedUser) {
-      alert('No account found. Please sign up first.');
-      return;
+  <script>
+    // Hash password function
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    const user = JSON.parse(storedUser);
-    const hashedPassword = await hashPassword(password);
+    // Wait for the page to fully load
+    document.addEventListener('DOMContentLoaded', async function() {
+      const form = document.getElementById('login-form');
+      
+      if (!form) {
+        console.error('Login form not found!');
+        alert('Error: Form not loaded.');
+        return;
+      }
 
-    if (user.email === email && user.password === hashedPassword) {
-      alert('Welcome back, ' + user.name + '!');
-      window.location.href = 'index.html';
-    } else {
-      alert('Email or password is incorrect.');
-    }
-  });
-});
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        const storedUser = localStorage.getItem('currentUser');
+        if (!storedUser) {
+          alert('No account found. Please sign up first.');
+          return;
+        }
+
+        const user = JSON.parse(storedUser);
+        const hashedPassword = await hashPassword(password);
+
+        if (user.email === email && user.password === hashedPassword) {
+          alert('Welcome back, ' + user.name + '!');
+          window.location.href = 'index.html';
+        } else {
+          alert('Email or password is incorrect.');
+        }
+      });
+    });
   </script>
-  
 </body>
 </html>
