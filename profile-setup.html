@@ -3,42 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Complete Your Profile | Kiribati Connect</title>
+  <title>Complete Your Profile - Kiribati Connect</title>
   <link rel="stylesheet" href="style/style.css" />
 </head>
 <body>
 
   <!-- Top Bar -->
-  <div class="top-bar">
-    <h2>📘 Kiribati Connect</h2>
-  </div>
+  <header class="top-bar">
+    <h1>KIRIBATI CONNECT</h1>
+  </header>
 
-  <!-- Profile Setup Form -->
-  <div class="container" style="max-width: 500px; margin: 40px auto; padding: 20px;">
-    <h2>Complete Your Profile</h2>
-    <p>Almost there! Help us know you better.</p>
+  <!-- Main Form -->
+  <main class="container" style="max-width: 500px; margin: 20px auto; padding: 20px;">
+    <section class="form-container">
+      <h2>Complete Your Profile</h2>
+      <p>Almost there! Help us know you better.</p>
 
-    <form id="profile-form">
-      <!-- Full Name -->
-      <div style="margin-bottom: 15px;">
+      <form id="profile-form">
+
+        <!-- Full Name -->
         <label for="fullName">Full Name</label>
-        <input 
-          type="text" 
-          id="fullName" 
-          name="fullName" 
-          placeholder="Tekuneintaake Tamton" 
-          required 
-          style="width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; box-sizing:border-box;" />
-      </div>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
 
-      <!-- From What Island -->
-      <div style="margin-bottom: 15px;">
-        <label for="island">From What Island?</label>
-        <select 
-          id="island" 
-          name="island" 
-          required
-          style="width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; box-sizing:border-box;">
+        <!-- From What Island -->
+        <label for="from">From What Island?</label>
+        <select id="from" name="from">
           <option value="">Select your island</option>
           <option value="Tarawa">Tarawa</option>
           <option value="Tabiteuea">Tabiteuea</option>
@@ -56,40 +45,22 @@
           <option value="Aba-Riku">Aba-Riku</option>
           <option value="Banaba">Banaba</option>
         </select>
-      </div>
 
-      <!-- About Me -->
-      <div style="margin-bottom: 15px;">
+        <!-- About Me -->
         <label for="aboutMe">About Me</label>
-        <textarea 
-          id="aboutMe" 
-          name="aboutMe" 
-          placeholder="I’m from Tabiteuea. I love fishing, weaving, and sharing stories." 
-          rows="3"
-          style="width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; box-sizing:border-box;"></textarea>
-      </div>
+        <textarea id="aboutMe" name="aboutMe" placeholder="Tell us about yourself..." rows="3"></textarea>
 
-      <!-- Profile Photo -->
-      <div style="margin-bottom: 15px;">
-        <label for="photo">Profile Photo (optional)</label>
-        <input 
-          type="file" 
-          id="photo" 
-          name="photo" 
-          accept="image/*"
-          style="margin-top:8px;" />
-      </div>
+        <!-- Profile Photo -->
+        <label for="profilePhoto">Profile Photo (optional)</label>
+        <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
 
-      <!-- Submit Button -->
-      <button 
-        type="submit" 
-        style="background:#003D79; color:white; border:none; padding:14px; width:100%; font-size:16px; border-radius:4px; cursor:pointer; font-weight:bold;">
-        Finish Setup
-      </button>
-    </form>
-  </div>
+        <!-- Submit Button -->
+        <button type="submit" class="submit-button">Finish Setup</button>
+      </form>
+    </section>
+  </main>
 
-  <!-- Bottom Nav (Optional) -->
+  <!-- Bottom Navigation -->
   <footer class="bottom-nav">
     <a href="index.html"><span>Home</span></a>
     <a href="about.html"><span>About</span></a>
@@ -97,20 +68,31 @@
     <a href="contact.html"><span>Contact</span></a>
   </footer>
 
-  <!-- Script to Save Profile -->
+  <!-- Script for Form Handling -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const form = document.getElementById('profile-form');
 
+      if (!form) {
+        console.error('Profile setup form not found!');
+        alert('Error: Form not loaded.');
+        return;
+      }
+
+      // Handle form submission
       form.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Get values
         const fullName = document.getElementById('fullName').value.trim();
-        const island = document.getElementById('island').value;
+        const island = document.getElementById('from').value;
         const aboutMe = document.getElementById('aboutMe').value.trim();
 
-        // Save to localStorage
+        if (!fullName || !island) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        // Save profile data
         const profile = {
           name: fullName,
           island: island,
@@ -118,7 +100,7 @@
           joined: new Date().toLocaleDateString()
         };
 
-        localStorage.setItem('currentUser', JSON.stringify(profile));
+        localStorage.setItem('currentUserProfile', JSON.stringify(profile));
 
         // Success!
         alert(`Welcome, ${fullName}! Your profile is ready.`);
@@ -126,6 +108,5 @@
       });
     });
   </script>
-
 </body>
 </html>
