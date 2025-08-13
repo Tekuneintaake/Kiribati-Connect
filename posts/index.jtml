@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My First Post - Kiribati-connect</title>
+  <title>Welcome to Kiribati - Kiribati-connect</title>
   <link rel="stylesheet" href="../style/style.css" />
 </head>
 <body>
@@ -13,18 +13,20 @@
       <h2>📘 Kiribati-connect</h2>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Post Content -->
     <main class="post">
       <article>
-        <h1>My First Post: Welcome to Kiribati</h1>
+        <h1>🌊 Welcome to Kiribati</h1>
         <p class="post-meta">By Admin | April 5, 2025</p>
 
-        <p>Hello everyone! 👋</p>
-        <p>This is my first post on <strong>Kiribati-connect</strong> — a website to share stories, culture, and news from the beautiful islands of Kiribati.</p>
+        <p>Hello friends! 👋</p>
+        <p>This is the first post on <strong>Kiribati-connect</strong>, a website to share stories, culture, and life in the beautiful islands of Kiribati.</p>
         
-        <p>I'm excited to begin this journey and share photos, traditions, and updates about life in Kiribati with the world.</p>
+        <p>Kiribati is a peaceful and strong nation in the middle of the Pacific Ocean. With 33 islands spread across three island groups — Gilbert, Phoenix, and Line — it is one of the most unique countries in the world.</p>
         
-        <p>Stay tuned for more posts soon! 🌴🌊</p>
+        <p>Through this site, I hope to share more about our traditions, environment, and people.</p>
+        
+        <p>Thank you for visiting! 🌴</p>
       </article>
     </main>
 
