@@ -11,6 +11,23 @@ select {
   width: 100%;
 }
 
+button[type="submit"] {
+  background-color: #003D79;
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 8px;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+button[type="submit"]:active {
+  background-color: #002A55;
+}
+
 /* Comments Section */
 .comments-section {
   margin: 10px 0;
