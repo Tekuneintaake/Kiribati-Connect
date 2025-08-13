@@ -1,3 +1,16 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  height: 48px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
 /* Comments Section */
 .comments-section {
   margin: 10px 0;
