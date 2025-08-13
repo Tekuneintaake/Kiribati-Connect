@@ -10,43 +10,43 @@
 
   <!-- Top Bar -->
   <header class="top-bar">
-    <h2>📘 Kiribati Connect</h2>
+    <h2>Kiribati Connect</h2>
   </header>
 
   <!-- Main Content -->
   <main class="container" style="max-width: 600px; margin: 20px auto; padding: 20px;">
-    
+
     <!-- Welcome Message -->
     <div id="welcome-section" style="margin-bottom: 20px; padding: 15px; background-color: #f0f8ff; border-radius: 8px;">
-      <p><strong>Welcome, <span id="user-name">Friend</span>!</strong></p>
+      <p><strong>Koreai, <span id="user-name">Friend</span>!</strong></p>
       <p>You’re from <strong><span id="user-island">your island</span></strong>.</p>
     </div>
 
     <!-- Create Post Box -->
-    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1);">
-      <h3 style="margin: 0 0 10px 0; font-size: 16px;">What would you like to share today?</h3>
+    <div class="post-box" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1);">
+      <h3 style="margin: 0 0 10px 0; font-size: 18px;">What would you like to share today?</h3>
       
       <textarea 
         id="post-input" 
         placeholder="Write something..." 
         rows="3" 
-        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; font-size: 16px;"></textarea>
+        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; font-size: 16px;"></textarea>
 
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <label style="font-size: 14px; color: #003D79;">
           <input type="file" id="post-photo" accept="image/*" style="display: none;" />
           📷 Add Photo
         </label>
-        <button id="post-button" style="background: #003D79; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        <button id="post-button" style="background: #003D79; color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">
           Post
         </button>
       </div>
     </div>
 
-    <!-- Posts Feed (Will show posts here) -->
+    <!-- Recent Posts Feed -->
     <div id="posts-feed" style="margin-top: 30px;">
       <h3>Recent Posts</h3>
-      <p id="no-posts" style="color: #666;">No posts yet. Be the first!</p>
+      <div id="no-posts" style="color: #666; margin-bottom: 10px;">No posts yet. Be the first!</div>
       <!-- Posts will appear here -->
     </div>
 
@@ -60,7 +60,7 @@
     <a href="contact.html"><span>Contact</span></a>
   </footer>
 
-  <!-- Script to Show User Info -->
+  <!-- Script to Show User Info and Handle Posting -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const userNameEl = document.getElementById('user-name');
