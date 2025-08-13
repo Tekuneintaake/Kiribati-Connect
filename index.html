@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home | Kiribati Connect</title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
 
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <h2>📘 Kiribati Connect</h2>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="max-width: 600px; margin: 20px auto; padding: 20px;">
+    
+    <!-- Welcome Message -->
+    <div id="welcome-section" style="margin-bottom: 20px; padding: 15px; background-color: #f0f8ff; border-radius: 8px;">
+      <p><strong>Welcome, <span id="user-name">Friend</span>!</strong></p>
+      <p>You’re from <strong><span id="user-island">your island</span></strong>.</p>
+    </div>
+
+    <!-- Create Post Box -->
+    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1);">
+      <h3 style="margin: 0 0 10px 0; font-size: 16px;">What would you like to share today?</h3>
+      
+      <textarea 
+        id="post-input" 
+        placeholder="Write something..." 
+        rows="3" 
+        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; font-size: 16px;"></textarea>
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <label style="font-size: 14px; color: #003D79;">
+          <input type="file" id="post-photo" accept="image/*" style="display: none;" />
+          📷 Add Photo
+        </label>
+        <button id="post-button" style="background: #003D79; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+          Post
+        </button>
+      </div>
+    </div>
+
+    <!-- Posts Feed (Will show posts here) -->
+    <div id="posts-feed" style="margin-top: 30px;">
+      <h3>Recent Posts</h3>
+      <p id="no-posts" style="color: #666;">No posts yet. Be the first!</p>
+      <!-- Posts will appear here -->
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <footer class="bottom-nav">
+    <a href="index.html"><span>Home</span></a>
+    <a href="about.html"><span>About</span></a>
+    <a href="posts.html"><span>Posts</span></a>
+    <a href="contact.html"><span>Contact</span></a>
+  </footer>
+
+  <!-- Script to Show User Info -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userNameEl = document.getElementById('user-name');
+      const userIslandEl = document.getElementById('user-island');
+      const welcomeSection = document.getElementById('welcome-section');
+
+      // Load user profile
+      const profile = JSON.parse(localStorage.getItem('currentUserProfile'));
+
+      if (profile && profile.name) {
+        userNameEl.textContent = profile.name;
+        userIslandEl.textContent = profile.island || 'your island';
+      } else {
+        userNameEl.textContent = 'Friend';
+        userIslandEl.textContent = 'your island';
+        welcomeSection.style.opacity = '0.8';
+      }
+
+      // Handle posting
+      const postInput = document.getElementById('post-input');
+      const postButton = document.getElementById('post-button');
+      const postsFeed = document.getElementById('posts-feed');
+      const noPosts = document.getElementById('no-posts');
+
+      postButton.addEventListener('click', function() {
+        const text = postInput.value.trim();
+        if (!text) {
+          alert('Please write something before posting.');
+          return;
+        }
+
+        // Create post element
+        const postEl = document.createElement('div');
+        postEl.style.padding = '15px';
+        postEl.style.border = '1px solid #eee';
+        postEl.style.borderRadius = '8px';
+        postEl.style.marginBottom = '10px';
+        postEl.style.backgroundColor = 'white';
+
+        postEl.innerHTML = `
+          <strong>${document.getElementById('user-name').textContent}</strong> 
+          <span style="color: #888; font-size: 12px;"> • Just now</span><br>
+          <p style="margin: 8px 0;">${text}</p>
+          <hr style="margin: 10px 0; border: none; border-top: 1px solid #eee;">
+          <div style="font-size: 14px; color: #003D79;">Like · Comment</div>
+        `;
+
+        postsFeed.prepend(postEl);
+        postInput.value = '';
+        noPosts.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
