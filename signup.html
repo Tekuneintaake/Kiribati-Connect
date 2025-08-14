@@ -4,133 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up | Kiribati Connect</title>
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style/style.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="logo">Kiribati Connect</div>
-    <a href="login.html">Log In</a>
   </div>
-
-  <!-- Main Content -->
-  <main>
-    <section class="container" style="max-width: 500px; margin: 40px auto;">
-      <h2>Create Your Profile</h2>
-      <p>Join the IKiribati network</p>
-
-      <form id="signup-form">
-        <!-- Full Name -->
-        <div style="margin-bottom: 15px;">
-          <label for="fullName">Full Name</label>
-          <input type="text" id="fullName" name="fullName" placeholder="Teima Teweia" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-        </div>
-
-        <!-- Email -->
-        <div style="margin-bottom: 15px;">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="teima@example.com" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-        </div>
-
-        <!-- Password -->
-        <div style="margin-bottom: 15px;">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-        </div>
-
-        <!-- BIO -->
-        <div style="margin-bottom: 15px;">
-          <label for="bio">About Me</label>
-          <textarea id="bio" name="bio" placeholder="I'm proud to be IKiribati..." style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px; resize:none;" rows="3"></textarea>
-        </div>
-
-        <!-- FROM: Simple Dropdown -->
-        <div style="margin-bottom: 15px;">
-          <label for="location">From</label>
-          <select id="location" name="location" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;" required>
-            <option value="">Select your island or country</option>
-            <!-- Add islands here -->
-          </select>
-        </div>
-
-        <!-- Profile Photo -->
-        <div style="margin-bottom: 15px;">
-          <label for="profilePhoto">Profile Photo (optional)</label>
-          <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-          <small>Supports JPG, PNG, GIF</small>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-button" style="background:#D62828; color:white; border:none; padding:12px; width:100%; font-size:16px; border-radius:4px; cursor:pointer;">
-          Join Now
-        </button>
-      </form>
-    </section>
-  </main>
-
-  <!-- Bottom Navigation -->
-  <footer class="bottom-nav">
-    <a href="index.html"><span>Home</span></a>
-    <a href="about.html"><span>About</span></a>
-    <a href="posts.html"><span>Posts</span></a>
-    <a href="contact.html"><span>Contact</span></a>
-  </footer>
-
-  <!-- JavaScript -->
-  <script>
-    // Hash password function
-    async function hashPassword(password) {
-      const encoder = new TextEncoder();
-      const data = encoder.encode(password);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    // Wait for page to load
-    document.addEventListener('DOMContentLoaded', async function() {
-      const form = document.getElementById('signup-form');
-      
-      if (!form) {
-        console.error('Signup form not found!');
-        alert('Error: Form not loaded.');
-        return;
-      }
-
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById('fullName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
-        const bio = document.getElementById('bio').value.trim();
-        const location = document.getElementById('location').value;
-
-        if (!name || !email || !password) {
-          alert("Please fill in all required fields.");
-          return;
-        }
-
-        const hashedPassword = await hashPassword(password);
-
-        const user = {
-          name,
-          email,
-          password: hashedPassword,
-          bio: bio || 'No bio yet',
-          location: location || 'Unknown',
-          avatar: name.slice(0, 2).toUpperCase(),
-          joined: new Date().toISOString().split('T')[0]
-        };
-
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        alert('Welcome to Kiribati Connect, ' + user.name + '!');
-        window.location.href = 'index.html';
-      });
-    });
-  </script>
-
+  <!-- Sign Up Form -->
+  <div class="container" style="max-width: 500px; margin: 40px auto;">
+    <h2>Create Your Profile</h2>
+    <p>Join the IKiribati network</p>
+    <form action="#" method="post">
+      <div style="margin-bottom: 15px;">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Teima Teweia" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="teima@example.com" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+      </div>
+      <div style="margin-bottom: 15px;">
+        <label for="location">From</label>
+        <select id="location" name="location" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+          <option value="Tarawa">Tarawa</option>
+          <option value="Butaritari">Butaritari</option>
+          <option value="Makin">Makin</option>
+          <option value="Abaiang">Abaiang</option>
+          <option value="NZ">New Zealand</option>
+          <option value="Fiji">Fiji</option>
+          <option value="Australia">Australia</option>
+          <option value="USA">USA</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <button type="submit" style="background:#D62828; color:white; border:none; padding:12px; width:100%; font-size:16px; border-radius:4px; cursor:pointer;">
+        Join Now
+      </button>
+    </form>
+    <p style="text-align:center; margin-top:20px;">
+      Already have an account? <a href="login.html">Log in</a>
+    </p>
+  </div>
 </body>
 </html>
