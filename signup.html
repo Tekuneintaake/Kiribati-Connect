@@ -1,55 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up | Kiribati Connect</title>
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiribati Connect - Create Profile</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            margin-top: 10px;
+        }
+        
+        .submit-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0d5bba;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+        }
+        
+        .nav a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="logo">Kiribati Connect</div>
-  </div>
-  <!-- Sign Up Form -->
-  <div class="container" style="max-width: 500px; margin: 40px auto;">
-    <h2>Create Your Profile</h2>
-    <p>Join the IKiribati network</p>
-    <form action="#" method="post">
-      <div style="margin-bottom: 15px;">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Teima Teweia" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-      </div>
-      <div style="margin-bottom: 15px;">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="teima@example.com" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-      </div>
-      <div style="margin-bottom: 15px;">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-      </div>
-      <div style="margin-bottom: 15px;">
-        <label for="location">From</label>
-        <select id="location" name="location" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
-          <option value="Tarawa">Tarawa</option>
-          <option value="Butaritari">Butaritari</option>
-          <option value="Makin">Makin</option>
-          <option value="Abaiang">Abaiang</option>
-          <option value="NZ">New Zealand</option>
-          <option value="Fiji">Fiji</option>
-          <option value="Australia">Australia</option>
-          <option value="USA">USA</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <button type="submit" style="background:#D62828; color:white; border:none; padding:12px; width:100%; font-size:16px; border-radius:4px; cursor:pointer;">
-        Join Now
-      </button>
-    </form>
-    <p style="text-align:center; margin-top:20px;">
-      Already have an account? <a href="login.html">Log in</a>
-    </p>
-  </div>
+    <div class="container">
+        <header>
+            <h1>Kiribati Connect</h1>
+            <p class="subtitle">Create Your Profile</p>
+            <p>Join the I-Kiribati network</p>
+        </header>
+        
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                
+                <div class="form-group">
+                    <label for="about">About Me</label>
+                    <textarea id="about" placeholder="Tell us about yourself..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="island">From</label>
+                    <select id="island">
+                        <option value="" disabled selected>Select your island</option>
+                        <option value="Tarawa">Tarawa</option>
+                        <option value="Kiritimati">Kiritimati</option>
+                        <option value="Abaiang">Abaiang</option>
+                        <!-- Add more islands as needed -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Profile Photo (optional)</label>
+                    <input type="file" class="file-upload">
+                </div>
+                
+                <button type="submit" class="submit-btn">Join Now</button>
+            </form>
+        </div>
+        
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Posts</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
 </body>
 </html>
