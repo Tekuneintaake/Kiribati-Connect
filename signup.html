@@ -12,9 +12,7 @@
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="logo">Kiribati Connect</div>
-    <div class="auth-links">
-      <a href="login.html">Log In</a>
-    </div>
+    <a href="login.html">Log In</a>
   </div>
 
   <!-- Main Content -->
@@ -48,56 +46,12 @@
           <textarea id="bio" name="bio" placeholder="I'm proud to be IKiribati..." style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px; resize:none;" rows="3"></textarea>
         </div>
 
-        <!-- FROM: Full Island List with "Other" -->
+        <!-- FROM: Simple Dropdown -->
         <div style="margin-bottom: 15px;">
           <label for="location">From</label>
           <select id="location" name="location" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;" required>
             <option value="">Select your island or country</option>
-
-            <!-- Gilbert Islands -->
-            <optgroup label="Gilbert Islands">
-              <option value="Tarawa">Tarawa</option>
-              <option value="Butaritari">Butaritari</option>
-              <option value="Makin">Makin</option>
-              <option value="Abemama">Abemama</option>
-              <option value="Aranuka">Aranuka</option>
-              <option value="Marakei">Marakei</option>
-              <option value="Kuria">Kuria</option>
-              <option value="Nonouti">Nonouti</option>
-              <option value="Nikunau">Nikunau</option>
-              <option value="Onotoa">Onotoa</option>
-              <option value="Beru">Beru</option>
-              <option value="Tabiteuea">Tabiteuea</option>
-              <option value="Maiana">Maiana</option>
-            </optgroup>
-
-            <!-- Line Islands -->
-            <optgroup label="Line Islands">
-              <option value="Kiritimati">Kiritimati</option>
-              <option value="Tabuaeran">Tabuaeran (Fanning Island)</option>
-              <option value="Teraina">Teraina (Washington Island)</option>
-            </optgroup>
-
-            <!-- Phoenix Islands -->
-            <optgroup label="Phoenix Islands">
-              <option value="Rawaki">Rawaki (Phoenix Island)</option>
-              <option value="Manra">Manra (Sydney Island)</option>
-              <option value="Enderbury">Enderbury Island</option>
-              <option value="Birnie">Birnie Island</option>
-              <option value="Kanton">Kanton Island</option>
-              <option value="Oro">Oro (Orona)</option>
-              <option value="Nikumaroro">Nikumaroro (Gardner Island)</option>
-            </optgroup>
-
-            <!-- Outside Kiribati -->
-            <optgroup label="Outside Kiribati">
-              <option value="New Zealand">New Zealand</option>
-              <option value="Fiji">Fiji</option>
-              <option value="Australia">Australia</option>
-              <option value="China">China</option>
-              <option value="Samoa">Samoa</option>
-              <option value="Other">Other</option>
-            </optgroup>
+            <!-- Add islands here -->
           </select>
         </div>
 
@@ -113,10 +67,6 @@
           Join Now
         </button>
       </form>
-
-      <p style="text-align:center; margin-top:20px;">
-        Already have an account? <a href="login.html">Log in</a>
-      </p>
     </section>
   </main>
 
