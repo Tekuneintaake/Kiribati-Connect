@@ -9,7 +9,38 @@ const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
 let posts = JSON.parse(localStorage.getItem('kiribati-posts')) || [];
 
 // Display all posts
-function renderPosts() {
+function renderPosts()// Handle new post with photo
+document.querySelector('.post-btn').addEventListener('click', function() {
+  const input = document.querySelector('.post-input');
+  const content = input.value.trim();
+  const fileInput = document.getElementById('post-photo');
+  const file = fileInput.files[0];
+
+  if (!content) return;
+
+  // Create post object
+  const newPost = {
+    id: Date.now(),
+    name: currentUser.name,
+    avatar: currentUser.avatar,
+    location: currentUser.location,
+    content: content,
+    timestamp: new Date().toISOString(),
+    likes: 0,
+    photo: null
+  };
+
+  // If a file was selected, save it (for now, just store filename)
+  if (file) {
+    newPost.photo = file.name;
+  }
+
+  posts.unshift(newPost);
+  localStorage.setItem('kiribati-posts', JSON.stringify(posts));
+  input.value = '';
+  fileInput.value = ''; // Clear file input
+  renderPosts();
+});   {
   const feed = document.querySelector('.feed');
   const postForm = document.querySelector('.post-form');
 
