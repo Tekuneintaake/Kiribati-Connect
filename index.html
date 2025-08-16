@@ -36,11 +36,18 @@
 
     <!-- Main Feed -->
     <div class="feed">
-      <!-- Post Form -->
-      <div class="post-form">
-        <textarea class="post-input" placeholder="What’s on your mind?"></textarea>
-        <button class="post-btn">Post</button>
-      </div>
+  
+      <!-- Create Post Box -->
+<div class="post-form">
+  <textarea class="post-input" placeholder="What’s on your mind?" rows="3"></textarea>
+
+  <!-- Photo Upload -->
+  <label for="post-photo">Add a photo (optional)</label>
+  <input type="file" id="post-photo" name="post-photo" accept="image/*" class="post-photo-input" style="width:100%; padding:10px; margin-top:5px; border:1px solid #ddd; border-radius:4px;">
+
+  <!-- Submit Button -->
+  <button class="post-btn">Post</button>
+</div>
 
       <!-- Sample Post -->
       <div class="post">
