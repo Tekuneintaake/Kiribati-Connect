@@ -512,8 +512,3 @@ body {
 .container {
   margin-bottom: 70px;
 }
-
-/* Hide bottom navigation on signup page */
-.signup-page .bottom-nav {
-  display: none !important;
-}
