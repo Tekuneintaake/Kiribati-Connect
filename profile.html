@@ -7,6 +7,62 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style/style.css">
   <style>
+
+    <script>
+// Load current user
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
+  name: 'Guest',
+  avatar: '??',
+  location: 'Unknown',
+  bio: 'No bio yet',
+  photo: null // Add photo field
+};
+
+// Display current photo or initials
+function updateProfileDisplay() {
+  const avatar = document.getElementById('avatar');
+  const photo = document.getElementById('profile-photo-img');
+
+  if (currentUser.photo) {
+    // Show uploaded photo
+    avatar.style.backgroundImage = `url(${currentUser.photo})`;
+    avatar.style.backgroundColor = 'transparent';
+    avatar.textContent = '';
+    if (photo) photo.src = currentUser.photo;
+  } else {
+    // Show initials
+    avatar.style.backgroundImage = 'none';
+    avatar.style.backgroundColor = '#FDB813';
+    avatar.textContent = currentUser.avatar;
+  }
+}
+
+// Save profile photo
+function saveProfilePhoto() {
+  const fileInput = document.getElementById('profilePhoto');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert('Please select a photo.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    currentUser.photo = e.target.result; // Data URL
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    updateProfileDisplay();
+    alert('Profile photo updated!');
+  };
+  reader.readAsDataURL(file);
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', function() {
+  updateProfileDisplay();
+});
+</script>
+    
     .profile-card {
       background: white;
       border-radius: 12px;
