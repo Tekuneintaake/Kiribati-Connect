@@ -85,6 +85,21 @@
       <button class="edit-btn" onclick="editProfile()">Edit Profile</button>
     </div>
 
+    <!-- Edit Profile Form -->
+<div class="edit-profile">
+  <h3>Edit Profile</h3>
+
+  <!-- Profile Photo Upload -->
+  <div style="margin-bottom: 15px;">
+    <label for="profilePhoto">Change Profile Photo</label>
+    <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:4px;">
+  </div>
+
+  <button onclick="saveProfilePhoto()" style="background:#D62828; color:white; border:none; padding:10px 15px; border-radius:4px; cursor:pointer;">
+    Save Photo
+  </button>
+</div>
+
     <!-- Posts by User -->
     <div class="posts-section">
       <h3>Your Posts</h3>
