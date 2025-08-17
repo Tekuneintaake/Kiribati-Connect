@@ -1,1 +1,389 @@
-
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎  <meta charset="UTF-8" />
+‎  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+‎  <title>My Profile | Kiribati Connect</title>
+‎  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+‎  <style>
+‎    * {
+‎      box-sizing: border-box;
+‎      margin: 0;
+‎      padding: 0;
+‎      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+‎    }
+‎    
+‎    body {
+‎      background-color: #f5f5f5;
+‎      color: #333;
+‎      line-height: 1.6;
+‎    }
+‎    
+‎    .top-bar {
+‎      background-color: #003D79;
+‎      color: white;
+‎      padding: 15px 20px;
+‎      display: flex;
+‎      justify-content: space-between;
+‎      align-items: center;
+‎      position: sticky;
+‎      top: 0;
+‎      z-index: 100;
+‎    }
+‎    
+‎    .logo {
+‎      font-weight: bold;
+‎      font-size: 20px;
+‎    }
+‎    
+‎    .nav-links a {
+‎      color: white;
+‎      text-decoration: none;
+‎      margin-left: 15px;
+‎      font-size: 14px;
+‎    }
+‎    
+‎    .container {
+‎      padding: 15px;
+‎    }
+‎    
+‎    .profile-card {
+‎      background: white;
+‎      border-radius: 12px;
+‎      padding: 25px 20px;
+‎      margin-bottom: 20px;
+‎      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+‎      text-align: center;
+‎    }
+‎    
+‎    .profile-avatar {
+‎      width: 100px;
+‎      height: 100px;
+‎      border-radius: 50%;
+‎      background-color: #FDB813;
+‎      color: white;
+‎      font-weight: bold;
+‎      font-size: 40px;
+‎      display: flex;
+‎      justify-content: center;
+‎      align-items: center;
+‎      margin: 0 auto 15px;
+‎      background-size: cover;
+‎      background-position: center;
+‎    }
+‎    
+‎    .profile-name {
+‎      font-size: 22px;
+‎      font-weight: bold;
+‎      color: #003D79;
+‎      margin-bottom: 5px;
+‎    }
+‎    
+‎    .profile-location {
+‎      color: #65676b;
+‎      font-size: 16px;
+‎      margin-bottom: 15px;
+‎    }
+‎    
+‎    .profile-bio {
+‎      margin: 15px 0 20px;
+‎      font-size: 16px;
+‎      color: #2e2e2e;
+‎      line-height: 1.5;
+‎    }
+‎    
+‎    .btn {
+‎      display: inline-block;
+‎      padding: 12px 25px;
+‎      border-radius: 6px;
+‎      cursor: pointer;
+‎      font-size: 16px;
+‎      font-weight: 500;
+‎      text-align: center;
+‎      border: none;
+‎      width: 100%;
+‎      max-width: 200px;
+‎      margin: 5px 0;
+‎    }
+‎    
+‎    .btn-primary {
+‎      background: #D62828;
+‎      color: white;
+‎    }
+‎    
+‎    .btn-secondary {
+‎      background: #f0f0f0;
+‎      color: #333;
+‎    }
+‎    
+‎    .section {
+‎      background: white;
+‎      border-radius: 12px;
+‎      padding: 20px;
+‎      margin-bottom: 20px;
+‎      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+‎    }
+‎    
+‎    .section-title {
+‎      font-size: 18px;
+‎      font-weight: bold;
+‎      color: #003D79;
+‎      margin-bottom: 15px;
+‎      padding-bottom: 10px;
+‎      border-bottom: 1px solid #eee;
+‎    }
+‎    
+‎    .post {
+‎      padding: 15px 0;
+‎      border-bottom: 1px solid #eee;
+‎    }
+‎    
+‎    .post:last-child {
+‎      border-bottom: none;
+‎    }
+‎    
+‎    .post-content {
+‎      margin-bottom: 10px;
+‎      font-size: 15px;
+‎    }
+‎    
+‎    .post-time {
+‎      color: #65676b;
+‎      font-size: 13px;
+‎    }
+‎    
+‎    .form-group {
+‎      margin-bottom: 15px;
+‎    }
+‎    
+‎    label {
+‎      display: block;
+‎      margin-bottom: 8px;
+‎      font-weight: 500;
+‎      color: #333;
+‎    }
+‎    
+‎    input[type="text"],
+‎    input[type="file"],
+‎    textarea {
+‎      width: 100%;
+‎      padding: 12px;
+‎      border: 1px solid #ddd;
+‎      border-radius: 6px;
+‎      font-size: 16px;
+‎    }
+‎    
+‎    textarea {
+‎      min-height: 100px;
+‎      resize: vertical;
+‎    }
+‎    
+‎    .hidden {
+‎      display: none;
+‎    }
+‎    
+‎    @media (min-width: 768px) {
+‎      .container {
+‎        max-width: 600px;
+‎        margin: 0 auto;
+‎      }
+‎    }
+‎  </style>
+‎</head>
+‎<body>
+‎
+‎  <!-- Top Bar -->
+‎  <div class="top-bar">
+‎    <div class="logo">Kiribati Connect</div>
+‎    <div class="nav-links" id="auth-links">
+‎      <!-- Filled by JS -->
+‎    </div>
+‎  </div>
+‎
+‎  <!-- Profile Content -->
+‎  <div class="container">
+‎    <!-- Profile Card -->
+‎    <div class="profile-card">
+‎      <div class="profile-avatar" id="avatar">TK</div>
+‎      <h2 class="profile-name" id="name">Tebwebwe Karawa</h2>
+‎      <p class="profile-location" id="location">from Tarawa</p>
+‎      <p class="profile-bio" id="bio">Proud to be IKiribati. Our ocean, our culture, our future.</p>
+‎      <button class="btn btn-primary" onclick="toggleEditProfile()">Edit Profile</button>
+‎    </div>
+‎
+‎    <!-- Edit Profile Section -->
+‎    <div id="edit-profile-section" class="section hidden">
+‎      <h3 class="section-title">Edit Profile</h3>
+‎      
+‎      <div class="form-group">
+‎        <label for="editName">Name</label>
+‎        <input type="text" id="editName" placeholder="Your name">
+‎      </div>
+‎      
+‎      <div class="form-group">
+‎        <label for="editLocation">Location</label>
+‎        <input type="text" id="editLocation" placeholder="Where you're from">
+‎      </div>
+‎      
+‎      <div class="form-group">
+‎        <label for="editBio">About You</label>
+‎        <textarea id="editBio" placeholder="Tell us about yourself"></textarea>
+‎      </div>
+‎      
+‎      <div class="form-group">
+‎        <label for="profilePhoto">Profile Photo</label>
+‎        <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+‎      </div>
+‎      
+‎      <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+‎      <button class="btn btn-secondary" onclick="toggleEditProfile()">Cancel</button>
+‎    </div>
+‎
+‎    <!-- Posts Section -->
+‎    <div class="section">
+‎      <h3 class="section-title">Your Posts</h3>
+‎      <div id="user-posts">
+‎        <div class="post">
+‎          <div class="post-content">
+‎            Proud to be IKiribati. Our ocean, our culture, our future. 
+‎            Let's stay connected across the islands and around the world.
+‎          </div>
+‎          <div class="post-time">2 hours ago</div>
+‎        </div>
+‎      </div>
+‎    </div>
+‎  </div>
+‎
+‎  <script>
+‎    // Load current user
+‎    let currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
+‎      name: 'Guest',
+‎      avatar: '??',
+‎      location: 'Unknown',
+‎      bio: 'No bio yet',
+‎      photo: null
+‎    };
+‎
+‎    // Display current photo or initials
+‎    function updateProfileDisplay() {
+‎      const avatar = document.getElementById('avatar');
+‎      const nameEl = document.getElementById('name');
+‎      const locationEl = document.getElementById('location');
+‎      const bioEl = document.getElementById('bio');
+‎
+‎      // Update text fields
+‎      nameEl.textContent = currentUser.name;
+‎      locationEl.textContent = `from ${currentUser.location}`;
+‎      bioEl.textContent = currentUser.bio;
+‎
+‎      // Update avatar
+‎      if (currentUser.photo) {
+‎        avatar.style.backgroundImage = `url(${currentUser.photo})`;
+‎        avatar.style.backgroundColor = 'transparent';
+‎        avatar.textContent = '';
+‎      } else {
+‎        // Generate initials
+‎        if (currentUser.avatar === '??' && currentUser.name !== 'Guest') {
+‎          currentUser.avatar = currentUser.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+‎        }
+‎        
+‎        avatar.style.backgroundImage = 'none';
+‎        avatar.textContent = currentUser.avatar;
+‎        
+‎        // Set color based on name
+‎        const colors = ['#FDB813', '#D62828', '#003D79', '#006B3D'];
+‎        const color = colors[currentUser.name.charCodeAt(0) % colors.length];
+‎        avatar.style.backgroundColor = color;
+‎      }
+‎    }
+‎
+‎    // Toggle edit profile section
+‎    function toggleEditProfile() {
+‎      const editSection = document.getElementById('edit-profile-section');
+‎      editSection.classList.toggle('hidden');
+‎      
+‎      if (!editSection.classList.contains('hidden')) {
+‎        // Populate edit form
+‎        document.getElementById('editName').value = currentUser.name;
+‎        document.getElementById('editLocation').value = currentUser.location;
+‎        document.getElementById('editBio').value = currentUser.bio;
+‎      }
+‎    }
+‎
+‎    // Save profile changes
+‎    function saveProfile() {
+‎      const newName = document.getElementById('editName').value.trim();
+‎      const newLocation = document.getElementById('editLocation').value.trim();
+‎      const newBio = document.getElementById('editBio').value.trim();
+‎      
+‎      if (!newName) {
+‎        alert('Please enter your name');
+‎        return;
+‎      }
+‎      
+‎      // Update user object
+‎      currentUser.name = newName;
+‎      currentUser.location = newLocation || 'Unknown';
+‎      currentUser.bio = newBio || 'No bio yet';
+‎      currentUser.avatar = newName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+‎      
+‎      // Handle photo upload if selected
+‎      const fileInput = document.getElementById('profilePhoto');
+‎      if (fileInput.files.length > 0) {
+‎        const file = fileInput.files[0];
+‎        const reader = new FileReader();
+‎        
+‎        reader.onload = function(e) {
+‎          currentUser.photo = e.target.result;
+‎          saveAndUpdate();
+‎        };
+‎        
+‎        reader.readAsDataURL(file);
+‎      } else {
+‎        saveAndUpdate();
+‎      }
+‎    }
+‎    
+‎    function saveAndUpdate() {
+‎      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+‎      updateProfileDisplay();
+‎      toggleEditProfile();
+‎      alert('Profile updated successfully!');
+‎    }
+‎
+‎    // Update navigation (Log Out / Log In)
+‎    function updateAuthLinks() {
+‎      const authLinks = document.getElementById('auth-links');
+‎      authLinks.innerHTML = '';
+‎      
+‎      if (currentUser && currentUser.name !== 'Guest') {
+‎        const logoutLink = document.createElement('a');
+‎        logoutLink.href = '#';
+‎        logoutLink.textContent = 'Log Out';
+‎        logoutLink.onclick = function(e) {
+‎          e.preventDefault();
+‎          alert('You have been logged out.');
+‎          window.location.href = 'login.html';
+‎        };
+‎        authLinks.appendChild(logoutLink);
+‎      } else {
+‎        const loginLink = document.createElement('a');
+‎        loginLink.href = 'login.html';
+‎        loginLink.textContent = 'Log In';
+‎        authLinks.appendChild(loginLink);
+‎        
+‎        const signupLink = document.createElement('a');
+‎        signupLink.href = 'signup.html';
+‎        signupLink.textContent = 'Sign Up';
+‎        authLinks.appendChild(signupLink);
+‎      }
+‎    }
+‎
+‎    // Run on load
+‎    document.addEventListener('DOMContentLoaded', function() {
+‎      updateProfileDisplay();
+‎      updateAuthLinks();
+‎    });
+‎  </script>
+‎</body>
+‎</html>
