@@ -1,219 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiribati Connect - Create Profile</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 100%;
-        }
-        
-        .header-blue {
-            background-color: #1a73e8;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-        
-        .subtitle {
-            color: #e8f0fe;
-            margin: 10px 0 5px 0;
-        }
-        
-        .form-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 0 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        
-        .file-upload {
-            margin-top: 10px;
-        }
-        
-        .submit-btn {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: #0d5bba;
-        }
-        
-        .nav {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-            padding: 15px 0;
-            background-color: #1a73e8;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        
-        .nav a:hover {
-            background-color: #0d5bba;
-        }
-        
-        .login-btn {
-            background-color: white;
-            color: #1a73e8;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            transition: all 0.3s;
-        }
-        
-        .login-btn:hover {
-            background-color: #f1f3f4;
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                max-width: 500px;
-                margin: 0 auto;
-                padding-bottom: 60px; /* Space for fixed nav */
-            }
-            
-            .form-container {
-                margin: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiribati Connect - Create Profile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 100%;
+    }
+    
+    .header-blue {
+      background-color: #1a73e8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    
+    .subtitle {
+      color: #e8f0fe;
+      margin: 10px 0 5px 0;
+    }
+    
+    .form-container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 0 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    
+    .file-upload {
+      margin-top: 10px;
+    }
+    
+    .submit-btn {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: #0d5bba;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      padding: 15px 0;
+      background-color: #1a73e8;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .nav a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav a:hover {
+      background-color: #0d5bba;
+    }
+    
+    .login-btn {
+      background-color: white;
+      color: #1a73e8;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    
+    .login-btn:hover {
+      background-color: #f1f3f4;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding-bottom: 60px;
+      }
+      
+      .form-container {
+        margin: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-blue">
-            <h1>Kiribati Connect</h1>
-            <p class="subtitle">Create Your Profile</p>
-            <p>Join the I-Kiribati network</p>
-            <a href="/login.html" class="login-btn">Log In</a>
+  <div class="container">
+    <div class="header-blue">
+      <h1>Kiribati Connect</h1>
+      <p class="subtitle">Create Your Profile</p>
+      <p>Join the I-Kiribati network</p>
+      <a href="login.html" class="login-btn">Log In</a>
+    </div>
+    
+    <div class="form-container">
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="Enter your full name" required>
         </div>
         
-        <div class="form-container">
-            <form>
-                <div class="form-group">
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" placeholder="Enter your full name">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
-                </div>
-                
-                <div class="form-group">
-                    <label for="about">About Me</label>
-                    <textarea id="about" placeholder="Tell us about yourself..."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="island">From</label>
-                    <select id="island">
-                        <option value="" disabled selected>Select your island</option>
-                        <option value="Tarawa">Tarawa</option>
-                        <option value="Kiritimati">Kiritimati</option>
-                        <option value="Abaiang">Abaiang</option>
-                        <option value="Tabiteuea">Tabiteuea</option>
-                        <option value="Abemama">Abemama</option>
-                        <option value="Butaritari">Butaritari</option>
-                        <option value="Maiana">Maiana</option>
-                        <option value="Aranuka">Aranuka</option>
-                        <option value="Nonouti">Nonouti</option>
-                        <option value="Beru">Beru</option>
-                        <option value="Nikunau">Nikunau</option>
-                        <option value="Onotoa">Onotoa</option>
-                        <option value="Tamana">Tamana</option>
-                        <option value="Arorae">Arorae</option>
-                        <option value="Kuria">Kuria</option>
-                        <option value="Aba-Riku">Aba-Riku</option>
-                        <option value="Banaba">Banaba</option>   
-                        <option value="Makin">Makin</option>   
-                        <option value="Marakei">Marakei</option>   
-                        <option value="Tabuaeran">Tabuaeran</option>   
-                        <option value="Orona">Orona</option>   
-                        <!-- Add more islands as needed -->
-                    </select>   
-                </div>
-                
-                <div class="form-group">
-                    <label>Profile Photo (optional)</label>
-                    <input type="file" class="file-upload">
-                </div>
-                
-                <button type="submit" class="submit-btn">Join Now</button>
-            </form>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
         </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="about">About Me</label>
+          <textarea id="about" placeholder="Tell us about yourself..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="island">From</label>
+          <select id="island" required>
+            <option value="" disabled selected>Select your island</option>
+            <option value="Tarawa">Tarawa</option>
+            <option value="Kiritimati">Kiritimati</option>
+            <option value="Abaiang">Abaiang</option>
+            <option value="Tabiteuea">Tabiteuea</option>
+            <option value="Abemama">Abemama</option>
+            <option value="Butaritari">Butaritari</option>
+            <option value="Maiana">Maiana</option>
+            <option value="Aranuka">Aranuka</option>
+            <option value="Nonouti">Nonouti</option>
+            <option value="Beru">Beru</option>
+            <option value="Nikunau">Nikunau</option>
+            <option value="Onotoa">Onotoa</option>
+            <option value="Tamana">Tamana</option>
+            <option value="Arorae">Arorae</option>
+            <option value="Kuria">Kuria</option>
+            <option value="Aba-Riku">Aba-Riku</option>
+            <option value="Banaba">Banaba</option>   
+            <option value="Makin">Makin</option>   
+            <option value="Marakei">Marakei</option>   
+            <option value="Tabuaeran">Tabuaeran</option>   
+            <option value="Orona">Orona</option>   
+          </select>   
+        </div>
+        
+        <div class="form-group">
+          <label>Profile Photo (optional)</label>
+          <input type="file" class="file-upload" accept="image/*">
+        </div>
+        
+        <button type="submit" class="submit-btn">Join Now</button>
+      </form>
     </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="posts.html">Posts</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ✅ JavaScript to Handle Sign-Up -->
+  <script>
+    // Hash password using Web Crypto API
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Handle form submission
+    document.getElementById('signup-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const bio = document.getElementById('about').value.trim();
+      const location = document.getElementById('island').value;
+
+      if (!name || !email || !password || !location) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      // Hash the password
+      const hashedPassword = await hashPassword(password);
+
+      // Create user object
+      const user = {
+        name,
+        email,
+        password: hashedPassword,
+        bio: bio || 'No bio yet',
+        location,
+        avatar: name.slice(0, 2).toUpperCase(),
+        joined: new Date().toISOString().split('T')[0]
+      };
+
+      // ✅ Save to localStorage
+      localStorage.setItem('currentUser', JSON.stringify(user));
+
+      // ✅ Redirect to main page
+      alert('Welcome to Kiribati Connect, ' + user.name + '!');
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
 </html>
