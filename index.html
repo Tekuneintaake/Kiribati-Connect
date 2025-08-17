@@ -9,15 +9,53 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
+
   <!-- Top Navigation -->
   <div class="top-bar">
     <div class="logo">Kiribati Connect</div>
     <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Profile</a>
-      <a href="#">Messages</a>
-      <a href="/profile-setup.html">Settings</a>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="messages.html">Messages</a>
+      <a href="profile-setup.html">Settings</a>
     </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container" style="max-width: 500px; margin: 40px auto;">
+
+    <h2>⚙️ Settings</h2>
+    <p>Manage your account and preferences.</p>
+
+    <!-- Edit Profile -->
+    <div style="margin-bottom: 30px; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+      <h3>Edit Profile</h3>
+      <p>Update your name, bio, and photo.</p>
+      <a href="profile.html">
+        <button style="background:#003D79; color:white; border:none; padding:10px 15px; border-radius:6px; cursor:pointer;">
+          Go to Profile
+        </button>
+      </a>
+    </div>
+
+    <!-- Logout Section -->
+    <div style="margin-bottom: 30px; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+      <h3>Log Out</h3>
+      <p>Leave securely. Your profile will be saved.</p>
+      <button 
+        onclick="confirmLogout()" 
+        style="background: #D62828; 
+               color: white; 
+               border: none; 
+               padding: 12px 20px; 
+               width: 100%; 
+               font-size: 16px; 
+               border-radius: 6px; 
+               cursor: pointer;">
+        Log Out
+      </button>
+    </div>
+    
   </div>
 
   <!-- Main Content -->
