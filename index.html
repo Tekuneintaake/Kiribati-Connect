@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-26D0BD4FT2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-26D0BD4FT2');
+  </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-26D0BD4FT2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-26D0BD4FT2');
-</script>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Kiribati Connect</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style/style.css">
-  <!-- Add this for mobile icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="js/main.js" defer></script>
   <style>
-    /* Basic mobile-first styles */
+    /* Mobile-first styles */
     * {
       box-sizing: border-box;
     }
@@ -29,9 +26,9 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
     }
     
-    /* Mobile-friendly navigation */
     .top-bar {
       display: flex;
       justify-content: space-between;
@@ -50,10 +47,9 @@
     }
     
     .nav-links {
-      display: none; /* Hidden by default on mobile */
+      display: none;
     }
     
-    /* Mobile menu button */
     .mobile-menu-btn {
       display: block;
       background: none;
@@ -61,7 +57,6 @@
       font-size: 1.5rem;
     }
     
-    /* Mobile menu */
     .mobile-menu {
       position: fixed;
       bottom: 0;
@@ -84,13 +79,12 @@
       font-size: 0.8rem;
     }
     
-    /* Main content layout */
     .container {
-      padding-bottom: 60px; /* Space for mobile menu */
+      padding-bottom: 60px;
     }
     
     .sidebar {
-      display: none; /* Hidden on mobile */
+      display: none;
     }
     
     .feed {
@@ -98,7 +92,6 @@
       padding: 15px;
     }
     
-    /* Post form */
     .post-form {
       margin-bottom: 20px;
     }
@@ -122,12 +115,12 @@
       margin-top: 10px;
     }
     
-    /* Posts */
     .post {
       margin-bottom: 20px;
       border: 1px solid #eee;
       border-radius: 8px;
       padding: 15px;
+      background: white;
     }
     
     .post img {
@@ -140,13 +133,14 @@
       display: flex;
       justify-content: space-around;
       margin-top: 15px;
+      font-size: 14px;
     }
     
     .post-actions div {
       padding: 8px 0;
+      cursor: pointer;
     }
     
-    /* Media queries for larger screens */
     @media (min-width: 768px) {
       .mobile-menu-btn, .mobile-menu {
         display: none;
@@ -180,7 +174,7 @@
   <!-- Top Navigation -->
   <div class="top-bar">
     <div class="logo">Kiribati Connect</div>
-    <!-- Desktop Navigation -->
+    <!-- Desktop Nav -->
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="profile.html">Profile</a>
@@ -193,13 +187,11 @@
         </div>
       </div>
     </div>
-    <!-- Mobile menu button -->
     <button class="mobile-menu-btn">☰</button>
   </div>
 
   <!-- Main Content -->
   <div class="container">
-    <!-- Sidebar (hidden on mobile) -->
     <div class="sidebar">
       <h3>Menu</h3>
       <a href="#">News Feed</a>
@@ -213,7 +205,7 @@
 
     <!-- Main Feed -->
     <div class="feed">
-      <!-- Create Post Box -->
+      <!-- Post Form -->
       <div class="post-form">
         <textarea class="post-input" placeholder="What's on your mind?" rows="3"></textarea>
         <label for="post-photo">Add a photo (optional)</label>
@@ -221,38 +213,11 @@
         <button class="post-btn">Post</button>
       </div>
 
-      <!-- Sample Post -->
-      <div class="post">
-        <img src="images/1755517472044.jpg" alt="Tarawa Lagoon">
-        <p>Aio ara tabo ao ara Maneaba ni Ikiribati are tina itamaomao iai, ni karikirake ke ni ikarekebai. Nakon te namwakaina ae boou inanon Tebetembwa ao ena kona ni waaki raoi iai ara tabo aio bwa e tuai moa n tauraoi ni kona ni katoka toka iaon te tamnei bwa e kabooaki. Ibukin aio ao iatia ni karaoa au boraraoi bwa ena reke anne n te namwakaina ae boou. Tekeraoi.</p>
-        <p style="text-align: right; font-style: italic;">— Teish Adam</p>
-        <div class="post-actions">
-          <div>Like</div>
-          <div>Comment</div>
-          <div>Share</div>
-        </div>
-      </div>
-
-      <!-- Second Sample Post -->
-      <div class="post">
-        <div>
-          <span class="post-name">Tebwebwe Karawa</span>
-          <span class="post-location">from Tarawa</span>
-          <div class="post-time">2 hours ago</div>
-        </div>
-        <div class="post-content">
-          Proud to be IKiribati. Our ocean, our culture, our future.
-        </div>
-        <div class="post-actions">
-          <div>Like</div>
-          <div>Comment</div>
-          <div>Share</div>
-        </div>
-      </div>
+      <!-- Posts will be added here by JavaScript -->
     </div>
   </div>
 
-  <!-- Mobile Bottom Navigation -->
+  <!-- Mobile Bottom Nav -->
   <div class="mobile-menu">
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
     <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
@@ -260,5 +225,24 @@
     <a href="#"><i class="fas fa-cog"></i> Settings</a>
   </div>
 
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      alert('Mobile menu coming soon');
+    });
+
+    // Dropdown
+    document.querySelector('.dropdown-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('.dropdown').classList.toggle('open');
+    });
+
+    window.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelector('.dropdown').classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
