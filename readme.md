@@ -1,38 +1,253 @@
-Kiribati Connect
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kiribati Connect</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style/style.css">
+  <!-- Add this for mobile icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="js/main.js" defer></script>
+  <style>
+    /* Basic mobile-first styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Mobile-friendly navigation */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .nav-links {
+      display: none; /* Hidden by default on mobile */
+    }
+    
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+    }
+    
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+    
+    .mobile-menu a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.8rem;
+    }
+    
+    /* Main content layout */
+    .container {
+      padding-bottom: 60px; /* Space for mobile menu */
+    }
+    
+    .sidebar {
+      display: none; /* Hidden on mobile */
+    }
+    
+    .feed {
+      width: 100%;
+      padding: 15px;
+    }
+    
+    /* Post form */
+    .post-form {
+      margin-bottom: 20px;
+    }
+    
+    .post-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      resize: none;
+    }
+    
+    .post-btn {
+      width: 100%;
+      padding: 12px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    /* Posts */
+    .post {
+      margin-bottom: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 15px;
+    }
+    
+    .post img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .post-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+    
+    .post-actions div {
+      padding: 8px 0;
+    }
+    
+    /* Media queries for larger screens */
+    @media (min-width: 768px) {
+      .mobile-menu-btn, .mobile-menu {
+        display: none;
+      }
+      
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .container {
+        display: flex;
+        padding-bottom: 0;
+      }
+      
+      .sidebar {
+        display: block;
+        width: 250px;
+        padding: 20px;
+      }
+      
+      .feed {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
 
-"Te Iboa ni IKiribati" — The Network of the IKiribati people.
+  <!-- Top Navigation -->
+  <div class="top-bar">
+    <div class="logo">Kiribati Connect</div>
+    <!-- Desktop Navigation -->
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="messages.html">Messages</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">⚙️ Settings</button>
+        <div class="dropdown-menu">
+          <a href="profile-setup.html">Edit Profile</a>
+          <a href="#" onclick="confirmLogout(); return false;">Log Out</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn">☰</button>
+  </div>
 
-This is a simple, clean, and respectful social platform built for the IKiribati — the people of Kiribati.  
-It honors our identity, our connection across islands, and our place as the first to see the sunrise.
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Sidebar (hidden on mobile) -->
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <a href="#">News Feed</a>
+      <a href="#">Groups</a>
+      <a href="#">Events</a>
+      <a href="#">Friends</a>
+      <a href="#">Photos</a>
+      <hr>
+      <p>Built for the IKiribati people.<br>Kiribati: the land. IKiribati: the people.</p>
+    </div>
 
-> 🌅 Kiribati is the land.  
-> 👥 IKiribati are the people.
+    <!-- Main Feed -->
+    <div class="feed">
+      <!-- Create Post Box -->
+      <div class="post-form">
+        <textarea class="post-input" placeholder="What's on your mind?" rows="3"></textarea>
+        <label for="post-photo">Add a photo (optional)</label>
+        <input type="file" id="post-photo" name="post-photo" accept="image/*" class="post-photo-input">
+        <button class="post-btn">Post</button>
+      </div>
 
-This project is built by the Mahanaim Inc.Community:
-- HTML & CSS (simple, fast, mobile-friendly)
-- Free hosting via Cloudflare Pages
-- Respect for culture and language
+      <!-- Sample Post -->
+      <div class="post">
+        <img src="images/1755517472044.jpg" alt="Tarawa Lagoon">
+        <p>Aio ara tabo ao ara Maneaba ni Ikiribati are tina itamaomao iai, ni karikirake ke ni ikarekebai. Nakon te namwakaina ae boou inanon Tebetembwa ao ena kona ni waaki raoi iai ara tabo aio bwa e tuai moa n tauraoi ni kona ni katoka toka iaon te tamnei bwa e kabooaki. Ibukin aio ao iatia ni karaoa au boraraoi bwa ena reke anne n te namwakaina ae boou. Tekeraoi.</p>
+        <p style="text-align: right; font-style: italic;">— Teish Adam</p>
+        <div class="post-actions">
+          <div>Like</div>
+          <div>Comment</div>
+          <div>Share</div>
+        </div>
+      </div>
 
+      <!-- Second Sample Post -->
+      <div class="post">
+        <div>
+          <span class="post-name">Tebwebwe Karawa</span>
+          <span class="post-location">from Tarawa</span>
+          <div class="post-time">2 hours ago</div>
+        </div>
+        <div class="post-content">
+          Proud to be IKiribati. Our ocean, our culture, our future.
+        </div>
+        <div class="post-actions">
+          <div>Like</div>
+          <div>Comment</div>
+          <div>Share</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Mobile Bottom Navigation -->
+  <div class="mobile-menu">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+    <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
+    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+  </div>
 
-🎯 Purpose
-
-- Connect IKiribati across Aranuka, Abemama, Tarawa, Abaiang, Beru, Nikunau, Arorae, all Kiribati, and the diaspora
-- Share stories, news, and moments of life
-- Be easy to use — even on slow internet
-- Be 100% free, with no ads or data tracking
-
-
-
-🚀 Live Demo
-
-See it in action:  
-👉 [https://kiribaticonnect.pages.dev](https://kiribaticonnect.pages.dev)
-
----
-
-🛠️ How to Use
-
-1. Clone this repo:
-   ```bash
-   git clone https://github.com/your-username/kiribati-connect.git
+</body>
+</html>
