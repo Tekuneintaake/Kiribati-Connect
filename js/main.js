@@ -37,19 +37,20 @@ function renderPosts() {
       <div class="post-content">${post.content}</div>
       ${post.photo ? `<img src="${post.photo}" style="max-width:100%; border-radius:8px; margin:10px 0;">` : ''}
       <div class="post-actions">
-  <div class="like-btn" data-id="${post.id}">Like 💖 <span class="like-count">${post.likes || 0}</span></div>
-  <div class="comment-btn">Comment 💬</div>
-  <div class="share-btn">Share ↪️</div>
-</div>
+        <div class="like-btn" data-id="${post.id}">Like 💖 <span class="like-count">${post.likes || 0}</span></div>
+        <div class="comment-btn">Comment 💬</div>
+        <div class="share-btn">Share ↪️</div>
+      </div>
 
-<!-- Edit/Delete Controls (only for current user) -->
-${post.name === currentUser.name ? `
-<div class="post-controls" style="margin-top: 5px; font-size: 12px; color: #65676b; text-align: right;">
-  <button class="edit-post-btn" data-id="${post.id}" style="background: none; border: none; color: #003D79; cursor: pointer; font-size: 12px;">Edit</button>
-  <span> • </span>
-  <button class="delete-post-btn" data-id="${post.id}" style="background: none; border: none; color: #D62828; cursor: pointer; font-size: 12px;">Delete</button>
-</div>
-` : ''}
+      <!-- Edit/Delete Controls (only for current user) -->
+      ${post.name === currentUser.name ? `
+      <div class="post-controls" style="margin-top: 5px; font-size: 12px; color: #65676b; text-align: right;">
+        <button class="edit-post-btn" data-id="${post.id}" style="background: none; border: none; color: #003D79; cursor: pointer; font-size: 12px;">Edit</button>
+        <span> • </span>
+        <button class="delete-post-btn" data-id="${post.id}" style="background: none; border: none; color: #D62828; cursor: pointer; font-size: 12px;">Delete</button>
+      </div>
+      ` : ''}
+      
       <div class="comments-section"></div>
     `;
 
@@ -71,7 +72,7 @@ function formatTime(timestamp) {
   return postTime.toLocaleDateString();
 }
 
-// Add interactions (likes, comments)
+// Add interactions (likes, comments, edit, delete)
 function addPostInteractions() {
   // Like button
   document.querySelectorAll('.like-btn').forEach(button => {
@@ -124,6 +125,35 @@ function addPostInteractions() {
           input.value = '';
         }
       };
+    });
+  });
+
+  // ✅ Edit Post Button
+  document.querySelectorAll('.edit-post-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const id = this.getAttribute('data-id');
+      const post = posts.find(p => p.id == id);
+      if (!post) return;
+
+      const newContent = prompt('Edit your post:', post.content);
+      if (newContent !== null && newContent.trim() !== '') {
+        post.content = newContent.trim();
+        localStorage.setItem('kiribati-posts', JSON.stringify(posts));
+        renderPosts();
+      }
+    });
+  });
+
+  // ✅ Delete Post Button
+  document.querySelectorAll('.delete-post-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const id = this.getAttribute('data-id');
+      const confirmed = confirm('Are you sure you want to delete this post?');
+      if (confirmed) {
+        posts = posts.filter(p => p.id != id);
+        localStorage.setItem('kiribati-posts', JSON.stringify(posts));
+        renderPosts();
+      }
     });
   });
 }
