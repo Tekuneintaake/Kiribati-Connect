@@ -37,10 +37,19 @@ function renderPosts() {
       <div class="post-content">${post.content}</div>
       ${post.photo ? `<img src="${post.photo}" style="max-width:100%; border-radius:8px; margin:10px 0;">` : ''}
       <div class="post-actions">
-        <div class="like-btn" data-id="${post.id}">Like 💖 <span class="like-count">${post.likes || 0}</span></div>
-        <div class="comment-btn">Comment 💬</div>
-        <div class="share-btn">Share ↪️</div>
-      </div>
+  <div class="like-btn" data-id="${post.id}">Like 💖 <span class="like-count">${post.likes || 0}</span></div>
+  <div class="comment-btn">Comment 💬</div>
+  <div class="share-btn">Share ↪️</div>
+</div>
+
+<!-- Edit/Delete Controls (only for current user) -->
+${post.name === currentUser.name ? `
+<div class="post-controls" style="margin-top: 5px; font-size: 12px; color: #65676b; text-align: right;">
+  <button class="edit-post-btn" data-id="${post.id}" style="background: none; border: none; color: #003D79; cursor: pointer; font-size: 12px;">Edit</button>
+  <span> • </span>
+  <button class="delete-post-btn" data-id="${post.id}" style="background: none; border: none; color: #D62828; cursor: pointer; font-size: 12px;">Delete</button>
+</div>
+` : ''}
       <div class="comments-section"></div>
     `;
 
