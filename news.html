@@ -3,147 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emergency Alerts | Kiribati Connect</title>
+  <title>News | Kiribati Connect</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
     
     body {
-      background-color: #f5f5f5;
+      background-color: #f8f9fa;
       color: #333;
       line-height: 1.6;
-      padding: 0 15px 70px;
+      max-width: 100%;
+      overflow-x: hidden;
     }
     
-    .top-bar {
+    .app-header {
       background-color: #003366;
       color: white;
       padding: 15px;
       text-align: center;
-      margin: 0 -15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     
-    .logo {
-      font-weight: bold;
+    .app-title {
+      font-weight: 600;
       font-size: 1.2rem;
     }
     
     .container {
-      max-width: 100%;
+      padding: 15px;
+      margin-bottom: 60px;
     }
     
-    h2 {
-      margin-bottom: 15px;
+    h1 {
       color: #003366;
+      text-align: center;
+      margin: 15px 0 10px;
+      font-size: 1.5rem;
     }
     
-    .alert-section {
-      margin-bottom: 30px;
-    }
-    
-    .alert-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-    
-    .alert.active .alert-title {
-      color: #D62828;
-    }
-    
-    .alert-meta {
-      font-size: 0.85rem;
+    .page-description {
+      text-align: center;
       color: #666;
-      margin-top: 8px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    
+    .post {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .post img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    
+    h3 {
+      color: #003366;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+    
+    .post p {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    
+    .post-signature {
+      text-align: right;
       font-style: italic;
-    }
-    
-    .footer-note {
-      font-size: 0.85rem;
       color: #666;
-      margin-top: 30px;
-      border-top: 1px solid #ddd;
-      padding-top: 15px;
+      margin-top: 10px;
     }
     
+    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
       display: flex;
-      background-color: #003366;
-      color: white;
+      background-color: white;
+      border-top: 1px solid #e0e0e0;
+      padding: 8px 0;
     }
     
-    .bottom-nav a {
+    .nav-item {
       flex: 1;
       text-align: center;
-      padding: 12px 0;
-      color: white;
+      padding: 8px 0;
+      color: #003366;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
-    /* Active alert indicator */
-    .active-indicator {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      background-color: #D62828;
-      border-radius: 50%;
-      margin-right: 8px;
-      animation: pulse 1.5s infinite;
+    .nav-icon {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
     }
     
-    @keyframes pulse {
-      0% { transform: scale(0.95); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(0.95); }
+    /* Active tab indicator */
+    .nav-item.active {
+      color: #D62828;
     }
   </style>
 </head>
 <body>
-
-  <div class="top-bar">
-    <div class="logo">Kiribati Connect</div>
-  </div>
+  <header class="app-header">
+    <div class="app-title">Kiribati Connect</div>
+  </header>
 
   <div class="container">
-    <h2>⚠️ Emergency Alerts</h2>
-    <p>Official weather, tide, and tsunami warnings for all Kiribati islands.</p>
+    <h1>News & Insights</h1>
+    <p class="page-description">Sharing stories from across the islands.</p>
 
-    <div class="alert-section">
-      <div class="alert active">
-        <p class="alert-title"><span class="active-indicator"></span>Tsunami Warning (AMBER)</p>
-        <p>A strong earthquake near the Pacific has triggered a regional alert.</p>
-        <p class="alert-meta">Issued: April 6, 2025 | Source: Kiribati Meteorological Service</p>
-      </div>
-
-      <div class="alert">
-        <p class="alert-title">High Tide Alert</p>
-        <p>King tides expected across Tarawa and Butaritari this week. Avoid low-lying areas.</p>
-        <p class="alert-meta">Issued: April 5, 2025</p>
-      </div>
+    <!-- First news post -->
+    <div class="post">
+      <img src="Image/1755517472044.jpg" alt="Tarawa Lagoon">
+      <h3>Why I Built Kiribati Connect</h3>
+      <p>I'm Teish Adam from Tarawa. I built this platform so we can share our stories, photos, and pride — without ads, algorithms, or foreign owners.</p>
+      <p>This is not just a website. This is our digital home.</p>
+      <p>Be the second voice.</p>
+      <p class="post-signature">— Teish Adam</p>
     </div>
-
-    <p class="footer-note">
-      These alerts are shared in partnership with the Kiribati Meteorological Service.<br>
-      Stay safe. Stay informed.
-    </p>
   </div>
 
-  <!-- Bottom Nav -->
-  <footer class="bottom-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="alerts.html">Alerts</a>
-    <a href="contact.html">Contact</a>
-  </footer>
-
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <span class="nav-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="news.html" class="nav-item active">
+      <span class="nav-icon">📰</span>
+      <span>News</span>
+    </a>
+    <a href="alerts.html" class="nav-item">
+      <span class="nav-icon">⚠️</span>
+      <span>Alerts</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="nav-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
 </body>
 </html>
