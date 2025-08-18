@@ -8,15 +8,15 @@ const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {
 // Load posts from localStorage
 let posts = JSON.parse(localStorage.getItem('kiribati-posts')) || [
   {
-    id: 1,
-    name: "Teish Adam",
-    avatar: "TA",
-    location: "Tarawa",
-    content: "Welcome to Kiribati Connect! I built this for us — to share stories, photos, and pride. Be the second voice. 💬",
-    timestamp: new Date().toISOString(),
-    likes: 0,
-    photo: null
-  }
+  id: 1,
+  name: "Teish Adam",
+  avatar: "TA",
+  location: "Tarawa",
+  content: "Welcome to Kiribati Connect! I built this for us — to share stories, photos, and pride. Be the second voice. 💬",
+  timestamp: new Date().toISOString(),
+  likes: 0,
+  photo: "image/1755517472044.jpg"
+}
 ];
 
 // Display all posts
