@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-26D0BD4FT2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-26D0BD4FT2');
+  </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-26D0BD4FT2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-26D0BD4FT2');
-</script>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Log In | Kiribati Connect</title>
@@ -25,29 +23,39 @@
     <div class="logo">Kiribati Connect</div>
   </div>
 
-  <!-- Login Form -->
+  <!-- Login Container -->
   <div class="login-container">
-    <h2>Welcome Back</h2>
-    <p>Log in to your account</p>
+    <div class="login-header">
+      <h2>Welcome Back</h2>
+      <p>Log in to your account</p>
+    </div>
 
     <form id="login-form">
-      <div>
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="you@example.com" required>
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
       </div>
 
-      <button type="submit">Log In</button>
+      <button type="submit" class="btn btn-primary">Log In</button>
     </form>
 
     <p class="text-center">
-      <a href="signup.html">Don’t have an account? Join Now</a>
+      <a href="signup.html" style="color: #003D79; text-decoration: underline;">Don’t have an account? Join Now</a>
     </p>
   </div>
+
+  <!-- Bottom Navigation (Hidden on Login Page) -->
+  <nav class="bottom-nav hidden">
+    <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+    <a href="messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+    <a href="news.html"><i class="fas fa-newspaper"></i><span>News</span></a>
+  </nav>
 
   <script>
     // Hash password function
@@ -59,7 +67,6 @@
       return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // Wait for the page to fully load
     document.addEventListener('DOMContentLoaded', async function() {
       const form = document.getElementById('login-form');
       
