@@ -16,96 +16,83 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script src="js/main.js" defer></script>
-  
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="logo">Kiribati Connect</div>
-    <!-- Desktop Nav -->
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="profile.html">Profile</a>
-      <a href="messages.html">Messages</a>
-      <div class="dropdown">
-        <button class="dropdown-btn">⚙️ Settings</button>
-        <div class="dropdown-menu">
-          <a href="profile-setup.html">Edit Profile</a>
-          <a href="#" onclick="confirmLogout(); return false;">Log Out</a>
-        </div>
-      </div>
-    </div>
     <button class="mobile-menu-btn">☰</button>
   </div>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="sidebar">
-      <h3>Menu</h3>
-      <a href="#">News Feed</a>
-      <a href="#">Groups</a>
-      <a href="#">Events</a>
-      <a href="#">Friends</a>
-      <a href="#">Photos</a>
-      <a href="news.html">News</a>
-      <hr>
-      <p>Built for the IKiribati people.<br>Kiribati: the land. IKiribati: the people.</p>
+  <!-- Main Feed -->
+  <div class="feed-container">
+    <!-- Create Post -->
+    <div class="post-form">
+      <textarea class="post-input" placeholder="What's on your mind?" rows="3"></textarea>
+      <label for="post-photo" class="photo-label">Add a photo (optional)</label>
+      <input type="file" id="post-photo" name="post-photo" accept="image/*" class="post-photo-input">
+      <button class="post-btn">Post</button>
     </div>
 
-    <!-- Main Feed -->
-    <div class="feed">
-      <!-- Post Form -->
-      <div class="post-form">
-        <textarea class="post-input" placeholder="What's on your mind?" rows="3"></textarea>
-        <label for="post-photo">Add a photo (optional)</label>
-        <input type="file" id="post-photo" name="post-photo" accept="image/*" class="post-photo-input">
-        <button class="post-btn">Post</button>
-      </div>
-
-      <!-- Posts will be added here by JavaScript -->
+    <!-- Posts will be loaded by JavaScript -->
+    <div id="posts-container">
+      <!-- Posts appear here -->
     </div>
   </div>
 
-    <!-- Mobile Bottom Navigation -->
-  <div class="mobile-menu">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-    <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
-    <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+    <a href="messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+    <a href="news.html"><i class="fas fa-newspaper"></i><span>News</span></a>
+    <a href="#" onclick="toggleDropdown(); return false;"><i class="fas fa-cog"></i><span>Settings</span></a>
+  </nav>
+
+  <!-- Settings Modal -->
+  <div class="dropdown-modal" id="settings-modal" style="display: none;">
+    <div class="dropdown-modal-content">
+      <h3>Settings</h3>
+      <a href="profile-setup.html">Edit Profile</a>
+      <a href="#" onclick="confirmLogout(); return false;">Log Out</a>
+      <button class="close-btn">&times;</button>
+    </div>
   </div>
 
-  <!-- ✅ Add the script here -->
+  <!-- Scripts -->
   <script>
-    // Mobile menu toggle
-    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-      const menu = document.querySelector('.mobile-menu');
-      if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-      } else {
-        menu.style.display = 'flex';
-      }
-    });
+    // Toggle Settings Modal
+    function toggleDropdown() {
+      document.getElementById('settings-modal').style.display = 'flex';
+    }
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.querySelector('.mobile-menu').style.display = 'none';
-      });
-    });
-
-    // Dropdown for Settings
-    document.querySelector('.dropdown-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector('.dropdown').classList.toggle('open');
+    document.querySelector('.close-btn').addEventListener('click', function() {
+      document.getElementById('settings-modal').style.display = 'none';
     });
 
     window.addEventListener('click', function(e) {
-      if (!e.target.closest('.dropdown')) {
-        document.querySelector('.dropdown').classList.remove('open');
+      const modal = document.getElementById('settings-modal');
+      if (e.target === modal) {
+        modal.style.display = 'none';
       }
     });
+
+    function confirmLogout() {
+      if (confirm("Are you sure you want to log out?")) {
+        alert("You have been logged out.");
+        // Optional: redirect to login page
+        // window.location.href = "login.html";
+      }
+    }
+
+    // Close mobile menu if you add one later
+    document.querySelectorAll('.bottom-nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('settings-modal').style.display = 'none';
+      });
+    });
   </script>
+
 </body>
 </html>
