@@ -205,5 +205,18 @@
       updateProfileDisplay();
     });
   </script>
+
+<script>
+  // Check if user is logged in when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = localStorage.getItem('currentUser');
+    
+    // If NOT logged in, redirect to login
+    if (!currentUser || JSON.parse(currentUser).name === 'Guest') {
+      window.location.href = 'login.html';
+    }
+  });
+</script>
+  
 </body>
 </html>
