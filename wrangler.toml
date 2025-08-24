@@ -1,0 +1,8 @@
+name = "kiribati-connect-worker"
+main = "src/index.ts"
+compatibility_date = "2025-04-05"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "maurinet-db"
+database_id = "YOUR-DATABASE-ID-HERE"
